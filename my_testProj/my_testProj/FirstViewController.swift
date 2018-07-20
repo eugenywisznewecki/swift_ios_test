@@ -1,6 +1,6 @@
 //
 //  FirstViewController.swift
-//  testProj
+//  my_testProj
 //
 //  Created by mac-130-71 on 7/20/18.
 //  Copyright © 2018 mac-130-71. All rights reserved.
