@@ -29,6 +29,10 @@
                                     <action selector="cameraButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="lCf-2w-N80"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="4Fg-3a-WdO">
+                                <rect key="frame" x="32" y="120" width="157" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -42,6 +46,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="first" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="imageView" destination="4Fg-3a-WdO" id="5ug-Rv-O3E"/>
                         <outlet property="map" destination="ulL-VR-vvn" id="Ov6-XS-gjQ"/>
                     </connections>
                 </viewController>
