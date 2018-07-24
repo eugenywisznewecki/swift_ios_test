@@ -15,3 +15,5 @@ struct Photo{
     var image: UIImage
     var tag: String
 }
+
+

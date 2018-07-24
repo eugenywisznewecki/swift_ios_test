@@ -13,31 +13,53 @@ class CategoryViewController: UITableViewController {
     
     var photoArray = [Photo]()
     
+    var photosByDateMap = [Date: [Photo]]()
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
         let photo1 = Photo(name: "photo1",
-                           date: "2001-20-10",
+                           date: "2016-02-02 03:03:16",
                            image: UIImage(named: "download")!,
                            tag: "family")
         
         photoArray.append(photo1);
         
-        
         let photo2 = Photo(name: "photo2",
-                           date: "2333-20-10",
+                           date: "2015-05-14 03:16:16",
                            image: UIImage(named: "download1")!,
-                           tag: "some")
+                           tag: "friends")
                 photoArray.append(photo2);
         
-        
         let photo3 = Photo(name: "photo3",
-                           date: "2044-20-10",
+                           date: "2014-04-28 06:50:16",
                            image: UIImage(named: "download3")!,
-                           tag: "some2")
+                           tag: "work")
         photoArray.append(photo3);
+        
+        
+        let photo4 = Photo(name: "photo4",
+                           date: "2015-01-14 03:16:16",
+                           image: UIImage(named: "download1")!,
+                           tag: "friends")
+        photoArray.append(photo4);
+        
+        
+        let photo5 = Photo(name: "photo5",
+                           date: "2011-02-12 06:50:16",
+                           image: UIImage(named: "download3")!,
+                           tag: "work")
+        photoArray.append(photo5);
+        
+        
+        DateArrayConversionHelper.printPhotosTest(photoArray)
+        
+        
         
         
         
@@ -58,11 +80,22 @@ class CategoryViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        
+        
+        
+        //ccount sect
+        
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // count of rows
+        
+        
+        if (section == 0) {
+            return 1
+        }
+        
         return photoArray.count
     }
 
@@ -99,6 +132,7 @@ class CategoryViewController: UITableViewController {
             }
         }
     }
+    
  
 
 

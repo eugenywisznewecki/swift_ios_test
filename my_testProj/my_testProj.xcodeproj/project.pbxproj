@@ -15,6 +15,8 @@
 		015AED4F2101DD700061F5FF /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015AED4E2101DD700061F5FF /* CategoryViewController.swift */; };
 		015C3B662101FA7F00F70CE5 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015C3B652101FA7F00F70CE5 /* Photo.swift */; };
 		015C3B6821020B5C00F70CE5 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015C3B6721020B5C00F70CE5 /* PhotoViewController.swift */; };
+		015C3B6A210715A400F70CE5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015C3B69210715A400F70CE5 /* Extensions.swift */; };
+		015C3B6D21071A5100F70CE5 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015C3B6C21071A5100F70CE5 /* Month.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		015AED4E2101DD700061F5FF /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		015C3B652101FA7F00F70CE5 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		015C3B6721020B5C00F70CE5 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		015C3B69210715A400F70CE5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		015C3B6C21071A5100F70CE5 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,7 @@
 		015AED392101D4680061F5FF /* my_testProj */ = {
 			isa = PBXGroup;
 			children = (
+				015C3B6B21071A2B00F70CE5 /* Models */,
 				015AED3A2101D4680061F5FF /* AppDelegate.swift */,
 				015AED3C2101D4680061F5FF /* FirstViewController.swift */,
 				015AED402101D4680061F5FF /* Main.storyboard */,
@@ -69,8 +74,17 @@
 				015AED4E2101DD700061F5FF /* CategoryViewController.swift */,
 				015C3B652101FA7F00F70CE5 /* Photo.swift */,
 				015C3B6721020B5C00F70CE5 /* PhotoViewController.swift */,
+				015C3B69210715A400F70CE5 /* Extensions.swift */,
+				015C3B6C21071A5100F70CE5 /* Month.swift */,
 			);
 			path = my_testProj;
+			sourceTree = "<group>";
+		};
+		015C3B6B21071A2B00F70CE5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +159,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				015C3B662101FA7F00F70CE5 /* Photo.swift in Sources */,
+				015C3B6A210715A400F70CE5 /* Extensions.swift in Sources */,
+				015C3B6D21071A5100F70CE5 /* Month.swift in Sources */,
 				015AED3B2101D4680061F5FF /* AppDelegate.swift in Sources */,
 				015AED4F2101DD700061F5FF /* CategoryViewController.swift in Sources */,
 				015AED3D2101D4680061F5FF /* FirstViewController.swift in Sources */,
