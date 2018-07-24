@@ -13,6 +13,21 @@ class FirstViewController: UIViewController {
 
     @IBOutlet weak var map: MKMapView!
     
+    
+    @IBAction func cameraButton(_ sender: UIButton) {
+        
+        let alertController = UIAlertController(title: "some title", message: "some message",
+                                                preferredStyle: .actionSheet)
+        
+        alertController.addAction(UIAlertAction(title: "Take a picture", style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Choose From Library", style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alertController, animated: true)
+        
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
