@@ -11,9 +11,9 @@ import UIKit
 
 struct Photo{
     var name: String
-    var date: String
+    var date: Date
     var image: UIImage
-    var tag: String
+    var tag: Category
 }
 
 

@@ -29,10 +29,10 @@ extension Formatter {
     }()
 }
 
-
 extension Date {
     
     var monthString: String  { return Formatter.monthString.string(from: self) }
+    
     var monthInt: Int { return Int(Formatter.monthInt.string (from:self))! }
     var yearInt: Int { return Int(Formatter.year.string(from: self))!}
     
@@ -48,8 +48,6 @@ extension Date {
         return date
     }
     
-    
-
     static func parse(_ string: String, format: String = "yyyy-MM-dd HH:mm:ss") -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = NSTimeZone.default
@@ -58,25 +56,38 @@ extension Date {
         let date = dateFormatter.date(from: string)!
         return date
     }
+    
+    static func normalDate(date: Date) -> String {
+        
+        let formatter = DateFormatter()
+      
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        let myString = formatter.string(from: date)
+      
+        let yourDate = formatter.date(from: myString)
+        
+        formatter.dateFormat = "dd-MMM-yyyy"
+    
+        let myStringafd = formatter.string(from: yourDate!)
+        
+        print(myStringafd)
+        
+        return myStringafd
+        
+    }
+    
+    
 }
-
 
 class DateArrayConversionHelper {
     
     static func sortDateByMonth(dateArray:[Date]) -> [[Date]] {
         
-        
-        //create a copy of input array and sort it
-        
         var inputArray:[Date] = dateArray
         inputArray.sort()
         
-        //create target data structure
-        
         var resultArray:[[Date]] = [[]]
-        
-        //set initial variable and add it to target data structure
-        
         resultArray[0].append(inputArray[0])
         var k = 0
         
@@ -96,52 +107,58 @@ class DateArrayConversionHelper {
         return resultArray
     }
     
-//    static func sortPhotosByMonth(photosArray:[Photo]) -> [Date: [Photo]] {
-//
-//
-//        //create a copy of input array and sort it
-//
-//        var photoArra:[Photo] = photosArray
-//     //   inputArray.sort()
-//
-//        //create target data structure
-//
-//        var resultDictionary:[Date: [Month]] = [Month: [Photo]]()
-//
-//        //set initial variable and add it to target data structure
-//
-//       //resultDictionary[0].append(photosArray[0])
-//        var k = 0
-//
-//        for i in 1 ..< (photosArray.count) {
-//
-//
-//
-//            if (Date.parse(photosArray[i].date).yearInt == Date.parse(photosArray[i-1].date).yearInt)
-//                && (Date.parse(photosArray[i].date).monthInt == Date.parse(photosArray[i-1].date).monthInt) {
-//                resultDictionary[k].append(inputArray[i])
-//            }
-//            else {
-//                k = k+1
-//                resultDictionary.append([])
-//                resultDictionary[k].append(inputArray[i])
-//            }
-//        }
-//
-//        return resultDictionary
-//    }
+    //    static func sortPhotosByMonth(_ photosArray: [Photo]) -> [Month: [Photo]]  {
+    //
+    //        print("no sorted: \(photosArray)")
+    //
+    //        var photoArrayIn:[Photo] = photosArray.sorted(by: {$0.date < $1.date})
+    //        print("/n sorted: \(photoArrayIn)")
+    //
+    //        var resultDictionary:[Month: [Photo]] = [Month: [Photo]]()
+    //
+    //
+    //
+    //        for i in 0..<(photoArrayIn.count){
+    //            print(i)
+    //
+    //            var month: Month = Month(year: photoArrayIn[i].date.yearInt, month:
+    //                photoArrayIn[i].date.monthInt)
+    //
+    //            var photosInMonth = [Photo]()
+    //
+    //            resultDictionary[month] =
+    //
+    //        }
     
-    static func printPhotosTest(_ photoArray: [Photo]){
-        
-        for i in 0 ..< (photoArray.count){
-            print("year + \(Date.parse(photoArray[i].date).yearInt)")
-            print("month + \(Date.parse(photoArray[i].date).monthInt)")
-        }
+    //        for i in 1 ..< (photosArray.count) {
+    //
+    //
+    //
+    //            if (Date.parse(photosArray[i].date).yearInt == Date.parse(photosArray[i-1].date).yearInt)
+    //                && (Date.parse(photosArray[i].date).monthInt == Date.parse(photosArray[i-1].date).monthInt) {
+    //                resultDictionary[k].append(inputArray[i])
+    //            }
+    //            else {
+    //                k = k+1
+    //                resultDictionary.append([])
+    //                resultDictionary[k].append(inputArray[i])
+    //            }
+    //        }
+    //
+//    return resultDictionary
+//}
 
+static func printPhotosTest(_ photoArray: [Photo]){
+    
+    for i in 0 ..< (photoArray.count){
+        print("year + \(photoArray[i].date).yearInt)")
+        print("month + \(photoArray[i].date).monthInt)")
     }
-    
-    
-    
+   
+}
+
+
+
 }
 
 let randomDates:[Date] = [Date.parse("2014-05-20"), Date.parse("2012-07-21"), Date.parse("2012-07-01"), Date.parse("2017-01-24"), Date.parse("2017-01-11"), Date.parse("2017-01-14"), Date.parse("2000-01-02"), Date.parse("2000-05-20")]

@@ -1,5 +1,5 @@
 //
-//  Month.swift
+//  Category.swift
 //  my_testProj
 //
 //  Created by mac-130-71 on 7/24/18.
@@ -8,10 +8,8 @@
 
 import Foundation
 
-
-struct Month: Hashable{
-    var year: Int
-    var month: Int
-    
-    
+enum Category: String{
+    case Nature = "Nature"
+    case Friends = "Friends"
+    case Default = "Default"
 }
