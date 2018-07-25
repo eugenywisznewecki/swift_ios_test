@@ -9,26 +9,24 @@
 import UIKit
 import MapKit
 
-class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var imagePicker = UIImagePickerController()
     
     @IBOutlet weak var imageView: UIImageView!
-    
-    
     @IBOutlet weak var map: MKMapView!
+    
+    
     @IBAction func cameraButton(_ sender: UIButton) {
         
         let alertController = UIAlertController(title: "some title", message: "some message",
                                                 preferredStyle: .actionSheet)
-        
         alertController.addAction(UIAlertAction(title: "Take a picture", style: .default, handler: nil))
         alertController.addAction(UIAlertAction(title: "Choose From Library", style: .default, handler: {
             ( action: UIAlertAction!) in self.choosePhoto()
         }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alertController, animated: true)
-        
     }
     
     func choosePhoto(){
@@ -56,8 +54,17 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         annotation.subtitle = "subtitle"
         map.addAnnotation(annotation)
         
+        
+        //longPress
+//        var uilr = UILongPressGestureRecognizer(target: self, action: #selector(MKMapView.addAnnotation(_:)))
+//        uilr.minimumPressDuration = 1.0
+//
+//
+//        map.addGestureRecognizer(uilr)
+        
 
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -67,8 +74,9 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            imageView.contentMode = .scaleAspectFit
-            imageView.image = pickedImage
+
+            //            imageView.contentMode = .scaleAspectFit
+//            imageView.image = pickedImage
         }
         
         dismiss(animated: true, completion: nil)

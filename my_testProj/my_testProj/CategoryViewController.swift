@@ -15,10 +15,8 @@ class CategoryViewController: UITableViewController {
     
     var photosByDateMap = [Date: [Photo]]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         let photo1 = Photo(name: "photo1",
                            date: Date.parse("2016-02-02 03:03:16"),
@@ -56,9 +54,7 @@ class CategoryViewController: UITableViewController {
         
         DateArrayConversionHelper.printPhotosTest(photoArray)
         
-        //        DateArrayConversionHelper.sortPhotosByMonth(photoArray)
-        
-        
+        // DateArrayConversionHelper.sortPhotosByMonth(photoArray)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -75,9 +71,6 @@ class CategoryViewController: UITableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        
-        //ccount sect
-        
         return 3
     }
     
@@ -87,7 +80,6 @@ class CategoryViewController: UITableViewController {
         if (section == 0) {
             return 1
         }
-        
         return photoArray.count
     }
     
@@ -102,31 +94,15 @@ class CategoryViewController: UITableViewController {
         return cell
     }
     
-    //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-    //
-    //         let photo = photoArray[indexPath.row]
-    //
-    //        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-    //        let PhotoViewController = storyBoard.instantiateViewController(withIdentifier: "PhotoViewController") as! PhotoViewController
-    //
-    //        self.navigationController?.pushViewController(PhotoViewController, animated: true)
-    //
-    //
-    //
-    //    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "showDetail"){
             if let indexPath = tableView.indexPathForSelectedRow {
                 let destinationController = segue.destination as! PhotoViewController
                 destinationController.photo = photoArray[indexPath.row]
-                
-                
             }
         }
     }
-    
-    
     
     
 }
