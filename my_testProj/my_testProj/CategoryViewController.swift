@@ -21,34 +21,34 @@ class CategoryViewController: UITableViewController {
         let photo1 = Photo(name: "photo1",
                            date: Date.parse("2016-02-02 03:03:16"),
                            image: UIImage(named: "download")!,
-                           tag: Category.Friends )
+                           category: Category.Friends )
         
         photoArray.append(photo1);
         
         let photo2 = Photo(name: "photo2",
                            date: Date.parse("2015-05-14 03:16:16"),
                            image: UIImage(named: "download1")!,
-                           tag: Category.Nature)
+                           category: Category.Nature)
         photoArray.append(photo2);
         
         let photo3 = Photo(name: "photo3",
                            date: Date.parse("2014-04-28 06:50:16"),
                            image: UIImage(named: "download3")!,
-                           tag: Category.Friends)
+                           category: Category.Friends)
         photoArray.append(photo3);
         
         
         let photo4 = Photo(name: "photo4",
                            date: Date.parse("2015-01-14 03:16:16"),
                            image: UIImage(named: "download1")!,
-                           tag: Category.Nature)
+                           category: Category.Nature)
         photoArray.append(photo4);
         
         
         let photo5 = Photo(name: "photo5",
                            date: Date.parse("2011-02-12 06:50:16"),
                            image: UIImage(named: "download3")!,
-                           tag: Category.Default)
+                           category: Category.Default)
         photoArray.append(photo5);
         
         
@@ -89,7 +89,7 @@ class CategoryViewController: UITableViewController {
         
         let photo = photoArray[indexPath.row]
         cell.textLabel?.text = photo.name
-        cell.detailTextLabel?.text = Date.normalDate(date: photo.date) + " / " + photo.tag.rawValue
+        cell.detailTextLabel?.text = Date.normalDate(date: photo.date) + " / " + photo.category.rawValue
         cell.imageView?.image = photo.image
         return cell
     }

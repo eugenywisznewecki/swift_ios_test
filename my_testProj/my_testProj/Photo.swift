@@ -13,7 +13,7 @@ struct Photo{
     var name: String
     var date: Date
     var image: UIImage
-    var tag: Category
+    var category: Category
 }
 
 

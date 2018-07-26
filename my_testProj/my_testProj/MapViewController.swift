@@ -115,7 +115,7 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
             photo = Photo(name: "photoNEW",
                                date: Date.parse("2018-11-11 06:50:16"),
                                image: pickedImage,
-                               tag: Category.Default)
+                               category: Category.Default)
 
         }
 

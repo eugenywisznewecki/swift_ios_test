@@ -9,33 +9,51 @@
 import UIKit
 
 class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
+    
+    let categories = [Category.Default.rawValue, Category.Friends.rawValue, Category.Nature.rawValue]
+    
+    lazy var currDate: Date = { Date() }()
+    
     @IBOutlet weak var imageView: UIImageView!
-    
-    
-    
     var photo: Photo?
     
-    
-    
+    @IBOutlet weak var editTextView: UITextView!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
-    
     @IBOutlet weak var categoryButton: UIButton!
     
     @IBAction func categoryVIewButton(_ sender: UIButton) {
         pickerView.isHidden = false
     }
     
+    @IBAction func doneButton(_ sender: UIButton) {
+       
+        let photo =  Photo(name: editTextView.text,
+                           date: currDate,
+                           image: imageView.image!,
+                           category: Category(rawValue: (categoryButton.titleLabel?.text)!)!)
+        
+        print(photo)
+    }
     
-    let categories = ["Friend", "Work", "Default"]
-    
-    
-    
-    
+    @IBAction func cancelButton(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if photo != nil {imageView.image = photo?.image}
+        if photo != nil {
+            imageView.image = photo?.image
+            
+            //MARK:- date
+            let df = DateFormatter()
+            df.dateStyle = .long
+            df.timeStyle = .medium
+            let now = df.string(from: currDate)
+            dateLabel.text = now
+            
+        }
         
     }
     
@@ -56,12 +74,5 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         self.view.endEditing(true)
         pickerView.isHidden = true
     }
-    
-    
-    @IBAction func cancelButton(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    
 
 }

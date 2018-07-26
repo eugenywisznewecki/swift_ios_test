@@ -85,6 +85,9 @@
                                         <rect key="frame" x="160" y="335" width="114" height="73"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="doneButton:" destination="3LZ-t6-Q7P" eventType="touchUpInside" id="V5K-xR-Jnq"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OFG-sE-Vlq">
                                         <rect key="frame" x="25" y="215" width="283" height="2"/>
@@ -143,6 +146,8 @@
                     </view>
                     <connections>
                         <outlet property="categoryButton" destination="s2P-Uy-a1P" id="byn-M6-DtB"/>
+                        <outlet property="dateLabel" destination="ezO-PB-bme" id="vFP-dN-c3I"/>
+                        <outlet property="editTextView" destination="2LG-Dp-Sfo" id="aFb-NW-h5q"/>
                         <outlet property="imageView" destination="fZ6-oW-8lq" id="GZU-9N-4MK"/>
                         <outlet property="pickerView" destination="7mU-Uj-Vj7" id="jVb-RE-HjJ"/>
                     </connections>
