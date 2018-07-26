@@ -56,15 +56,31 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         
         //longPress
-//        var uilr = UILongPressGestureRecognizer(target: self, action: #selector(MKMapView.addAnnotation(_:)))
-//        uilr.minimumPressDuration = 1.0
-//
-//
-//        map.addGestureRecognizer(uilr)
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotationOnLongPress(gesture:)))
+        longPressGesture.minimumPressDuration = 1.0
+        map.addGestureRecognizer(longPressGesture)
         
-
+        
     }
-
+    
+    @objc func addAnnotationOnLongPress(gesture: UILongPressGestureRecognizer) {
+        
+        if gesture.state == .ended {
+            let point = gesture.location(in: map)
+            let coordinate = map.convert(point, toCoordinateFrom: map)
+            
+            print(coordinate)
+            
+            var annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            
+            
+            annotation.title = "new title"
+            annotation.subtitle = "new subtitle"
+            map.addAnnotation(annotation)
+        }
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -74,15 +90,15 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-
+            
             //            imageView.contentMode = .scaleAspectFit
-//            imageView.image = pickedImage
+            //            imageView.image = pickedImage
         }
         
         dismiss(animated: true, completion: nil)
     }
     
-   
+    
     
     
 }
