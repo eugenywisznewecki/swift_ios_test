@@ -10,6 +10,14 @@ import UIKit
 
 class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    @IBOutlet weak var imageView: UIImageView!
+    
+    
+    
+    var photo: Photo?
+    
+    
+    
     @IBOutlet weak var pickerView: UIPickerView!
     
     @IBOutlet weak var categoryButton: UIButton!
@@ -21,6 +29,15 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     let categories = ["Friend", "Work", "Default"]
     
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if photo != nil {imageView.image = photo?.image}
+        
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -46,9 +63,5 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
 
 }

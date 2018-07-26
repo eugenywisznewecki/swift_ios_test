@@ -34,7 +34,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="3LZ-t6-Q7P" kind="presentation" id="Wfd-lt-jaG"/>
+                                    <segue destination="3LZ-t6-Q7P" kind="presentation" identifier="DetailSegue" id="Wfd-lt-jaG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -60,7 +60,7 @@
         <!--Detail View Controller-->
         <scene sceneID="Llu-ko-c25">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="3LZ-t6-Q7P" customClass="DetailViewController" customModule="my_testProj" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="3LZ-t6-Q7P" customClass="DetailViewController" customModule="my_testProj" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="utL-Hq-Vmg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -143,6 +143,7 @@
                     </view>
                     <connections>
                         <outlet property="categoryButton" destination="s2P-Uy-a1P" id="byn-M6-DtB"/>
+                        <outlet property="imageView" destination="fZ6-oW-8lq" id="GZU-9N-4MK"/>
                         <outlet property="pickerView" destination="7mU-Uj-Vj7" id="jVb-RE-HjJ"/>
                     </connections>
                 </viewController>

@@ -13,12 +13,19 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
     
     var imagePicker = UIImagePickerController()
     
+    var photo: Photo?
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var map: MKMapView!
     
     
     @IBAction func cameraButton(_ sender: UIButton) {
         
+       showPictureOption()
+    }
+    
+    
+    func showPictureOption(){
         let alertController = UIAlertController(title: "some title", message: "some message",
                                                 preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "Take a picture", style: .default, handler: nil))
@@ -53,7 +60,7 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
         annotation.title = "title annotation"
         annotation.subtitle = "subtitle"
         map.addAnnotation(annotation)
-        
+
         
         //longPress
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotationOnLongPress(gesture:)))
@@ -73,7 +80,12 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
             
             var annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
+
+            //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            //let controller = storyboard.instantiateViewController(withIdentifier: "DetailController")
+            //self.present(controller, animated: true, completion: nil)
             
+            showPictureOption()
             
             annotation.title = "new title"
             annotation.subtitle = "new subtitle"
@@ -87,19 +99,29 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailController = segue.destination as? DetailViewController {
+            detailController.photo = self.photo
+        }
+    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
-            //            imageView.contentMode = .scaleAspectFit
-            //            imageView.image = pickedImage
+
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let controller = DetailViewController()
+
+            photo = Photo(name: "photoNEW",
+                               date: Date.parse("2018-11-11 06:50:16"),
+                               image: pickedImage,
+                               tag: Category.Default)
+
         }
-        
+
         dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "DetailSegue", sender: self)
+
     }
-    
-    
-    
-    
 }
 
