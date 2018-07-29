@@ -9,11 +9,6 @@
 import Foundation
 
 enum Category: String {
-    case Nature = "Nature"
-    case Friends = "Friends"
-    case Default = "Default"
-    
-    
-    
+    case Nature, Friends, Default
     
 }
