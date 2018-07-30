@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		014C5E58210F6091006D3DCB /* DetailPhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 014C5E57210F6091006D3DCB /* DetailPhoto.storyboard */; };
+		014C5E5A210F60A2006D3DCB /* DetailPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014C5E59210F60A2006D3DCB /* DetailPhotoViewController.swift */; };
 		014E26E6210F2E9B0084B4A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 014E26E5210F2E9A0084B4A8 /* GoogleService-Info.plist */; };
 		014E26E8210F36860084B4A8 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014E26E7210F36860084B4A8 /* Const.swift */; };
 		015AED3B2101D4680061F5FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015AED3A2101D4680061F5FF /* AppDelegate.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		014C5E57210F6091006D3DCB /* DetailPhoto.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailPhoto.storyboard; sourceTree = "<group>"; };
+		014C5E59210F60A2006D3DCB /* DetailPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPhotoViewController.swift; sourceTree = "<group>"; };
 		014E26E5210F2E9A0084B4A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		014E26E7210F36860084B4A8 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		015AED372101D4680061F5FF /* my_testProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = my_testProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		014C5E56210F607E006D3DCB /* DetailPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				014C5E57210F6091006D3DCB /* DetailPhoto.storyboard */,
+				014C5E59210F60A2006D3DCB /* DetailPhotoViewController.swift */,
+			);
+			path = DetailPhoto;
+			sourceTree = "<group>";
+		};
 		015AED2E2101D4680061F5FF = {
 			isa = PBXGroup;
 			children = (
@@ -84,13 +97,13 @@
 			isa = PBXGroup;
 			children = (
 				01917B1F210F43B10057BACB /* Utils */,
-				014E26E5210F2E9A0084B4A8 /* GoogleService-Info.plist */,
 				01AF2569210F07A800F8FC34 /* Resources */,
 				837960F5210DF97900A315FC /* View */,
 				837960F4210DF95700A315FC /* Extensions */,
 				837960F3210DF75D00A315FC /* Models */,
 				015AED3A2101D4680061F5FF /* AppDelegate.swift */,
 				015AED482101D4690061F5FF /* Info.plist */,
+				014E26E5210F2E9A0084B4A8 /* GoogleService-Info.plist */,
 			);
 			path = my_testProj;
 			sourceTree = "<group>";
@@ -149,6 +162,7 @@
 		837960F5210DF97900A315FC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				014C5E56210F607E006D3DCB /* DetailPhoto */,
 				01AF256A210F233E00F8FC34 /* Authentification */,
 				015AED452101D4690061F5FF /* LaunchScreen.storyboard */,
 				015AED3C2101D4680061F5FF /* MapViewController.swift */,
@@ -241,6 +255,7 @@
 				01AF256E210F238F00F8FC34 /* Authentification.storyboard in Resources */,
 				014E26E6210F2E9B0084B4A8 /* GoogleService-Info.plist in Resources */,
 				015AED442101D4690061F5FF /* Assets.xcassets in Resources */,
+				014C5E58210F6091006D3DCB /* DetailPhoto.storyboard in Resources */,
 				015AED422101D4680061F5FF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +316,7 @@
 				01AF256C210F236A00F8FC34 /* AuthentificationViewController.swift in Sources */,
 				015C3B6D21071A5100F70CE5 /* Month.swift in Sources */,
 				015AED3B2101D4680061F5FF /* AppDelegate.swift in Sources */,
+				014C5E5A210F60A2006D3DCB /* DetailPhotoViewController.swift in Sources */,
 				015AED4F2101DD700061F5FF /* CategoryViewController.swift in Sources */,
 				015AED3D2101D4680061F5FF /* MapViewController.swift in Sources */,
 				015C3B6821020B5C00F70CE5 /* PhotoViewController.swift in Sources */,

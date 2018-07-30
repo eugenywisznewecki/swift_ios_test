@@ -155,8 +155,7 @@ class AuthentificationViewController: UIViewController {
             // else!
         }
     }
-    
-    
+
     
     private func didSignInClick() {
         let email = emailTextView.text
@@ -164,7 +163,6 @@ class AuthentificationViewController: UIViewController {
         if (email != nil && password != nil) {
             signIn(with: email!, password: password!)
         }
-        
     }
     
     

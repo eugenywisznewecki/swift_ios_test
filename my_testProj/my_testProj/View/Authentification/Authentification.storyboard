@@ -48,13 +48,13 @@
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AhO-zt-Pfj">
-                                        <rect key="frame" x="144" y="324.5" width="96" height="21"/>
+                                        <rect key="frame" x="144" y="311.5" width="96" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NLc-LA-geO">
-                                        <rect key="frame" x="112" y="359.5" width="161" height="30"/>
+                                        <rect key="frame" x="112" y="346.5" width="161" height="30"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -64,7 +64,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Confirm password" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eKw-Xg-j95">
-                                        <rect key="frame" x="112" y="403.5" width="161" height="30"/>
+                                        <rect key="frame" x="112" y="390.5" width="161" height="30"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -74,7 +74,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bod-b5-aHB">
-                                        <rect key="frame" x="157" y="461.5" width="71" height="30"/>
+                                        <rect key="frame" x="157" y="435.5" width="71" height="30"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                         <state key="normal" title="Sign in"/>
                                         <connections>
@@ -94,6 +94,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="8vb-gE-MHF" secondAttribute="trailing" constant="107" id="0Ke-x1-QgZ"/>
+                                    <constraint firstItem="Ppe-h7-57T" firstAttribute="top" secondItem="FXO-rs-dPS" secondAttribute="bottom" constant="15.5" id="0f9-Bj-4bU"/>
                                     <constraint firstAttribute="trailing" secondItem="Ppe-h7-57T" secondAttribute="trailing" constant="134" id="2bg-jI-9TL"/>
                                     <constraint firstItem="bod-b5-aHB" firstAttribute="top" secondItem="eKw-Xg-j95" secondAttribute="bottom" constant="28" id="3NU-Tn-jxy"/>
                                     <constraint firstAttribute="trailing" secondItem="eKw-Xg-j95" secondAttribute="trailing" constant="102" id="5zW-aa-Eqk"/>
@@ -102,12 +103,14 @@
                                     <constraint firstItem="AhO-zt-Pfj" firstAttribute="leading" secondItem="0Bn-YN-ZWP" secondAttribute="leading" constant="144" id="9hi-0v-kLg"/>
                                     <constraint firstItem="AhO-zt-Pfj" firstAttribute="top" secondItem="8vb-gE-MHF" secondAttribute="bottom" constant="26" id="Az0-2T-0Pr"/>
                                     <constraint firstItem="8vb-gE-MHF" firstAttribute="leading" secondItem="0Bn-YN-ZWP" secondAttribute="leading" constant="107" id="DgZ-Uu-kNK"/>
+                                    <constraint firstItem="bod-b5-aHB" firstAttribute="top" secondItem="eKw-Xg-j95" secondAttribute="bottom" constant="15" id="EAJ-GA-dAV"/>
                                     <constraint firstItem="bod-b5-aHB" firstAttribute="leading" secondItem="0Bn-YN-ZWP" secondAttribute="leading" constant="157" id="EUf-rx-w0g"/>
                                     <constraint firstItem="NLc-LA-geO" firstAttribute="leading" secondItem="0Bn-YN-ZWP" secondAttribute="leading" constant="112" id="HxZ-Cw-Ehe"/>
                                     <constraint firstAttribute="trailing" secondItem="FXO-rs-dPS" secondAttribute="trailing" constant="127" id="IX3-Ym-Gif"/>
                                     <constraint firstAttribute="bottom" secondItem="bod-b5-aHB" secondAttribute="bottom" constant="124" id="Pd6-gW-I2w"/>
                                     <constraint firstItem="Ppe-h7-57T" firstAttribute="top" secondItem="FXO-rs-dPS" secondAttribute="bottom" constant="30" id="QFM-WX-2VA"/>
                                     <constraint firstItem="6R4-6a-aTV" firstAttribute="leading" secondItem="0Bn-YN-ZWP" secondAttribute="leading" constant="107" id="UY9-GV-N3h"/>
+                                    <constraint firstItem="AhO-zt-Pfj" firstAttribute="top" secondItem="8vb-gE-MHF" secondAttribute="bottom" constant="13.5" id="X2S-l4-Qyz"/>
                                     <constraint firstItem="6R4-6a-aTV" firstAttribute="top" secondItem="0Bn-YN-ZWP" secondAttribute="top" constant="153" id="ZCo-YE-lTd"/>
                                     <constraint firstAttribute="trailing" secondItem="6R4-6a-aTV" secondAttribute="trailing" constant="98" id="ZPJ-2w-Bqy"/>
                                     <constraint firstItem="eKw-Xg-j95" firstAttribute="leading" secondItem="0Bn-YN-ZWP" secondAttribute="leading" constant="112" id="csd-zR-gIg"/>

@@ -210,22 +210,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DSM-Kd-cAM">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SZX-fs-0vM">
                                 <rect key="frame" x="0.0" y="64" width="414" height="623"/>
-                            </imageView>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="pLN-fI-A3W" firstAttribute="trailing" secondItem="DSM-Kd-cAM" secondAttribute="trailing" id="HGb-Bc-v2v"/>
-                            <constraint firstItem="pLN-fI-A3W" firstAttribute="bottom" secondItem="DSM-Kd-cAM" secondAttribute="bottom" id="Sfl-6B-PCX"/>
-                            <constraint firstItem="DSM-Kd-cAM" firstAttribute="top" secondItem="pLN-fI-A3W" secondAttribute="top" id="fin-AH-E0W"/>
-                            <constraint firstItem="DSM-Kd-cAM" firstAttribute="leading" secondItem="pLN-fI-A3W" secondAttribute="leading" id="lFA-q3-vvH"/>
+                            <constraint firstItem="pLN-fI-A3W" firstAttribute="trailing" secondItem="SZX-fs-0vM" secondAttribute="trailing" id="8GF-ew-jPH"/>
+                            <constraint firstItem="SZX-fs-0vM" firstAttribute="leading" secondItem="pLN-fI-A3W" secondAttribute="leading" id="Gm6-OD-kvK"/>
+                            <constraint firstItem="SZX-fs-0vM" firstAttribute="top" secondItem="pLN-fI-A3W" secondAttribute="top" id="RgU-Mz-iSc"/>
+                            <constraint firstItem="pLN-fI-A3W" firstAttribute="bottom" secondItem="SZX-fs-0vM" secondAttribute="bottom" id="pBe-9v-N2j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pLN-fI-A3W"/>
                     </view>
-                    <connections>
-                        <outlet property="photoImage" destination="DSM-Kd-cAM" id="WCD-8A-NLV"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PEk-tE-tAg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
