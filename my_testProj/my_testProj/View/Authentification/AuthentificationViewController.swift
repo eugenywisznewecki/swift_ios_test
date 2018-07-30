@@ -29,31 +29,22 @@ class AuthentificationViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        //setupTapGestureForScrollView()
-        
-        
         
         activityIndicator.isHidden = true
-        setUpSignIn()
-        
+      
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-    
+  
     
     @IBAction func didSingMethodChange(_ sender: UISegmentedControl) {
-        if signInControl.selectedSegmentIndex == 1 {
+
+        
+        print(sender.selectedSegmentIndex)
+        if signInControl.selectedSegmentIndex == 0 {
             setUpSignUp()
-            
+
         } else {
-            //register
+            
             setUpSignIn()
         }
     }
@@ -63,7 +54,6 @@ class AuthentificationViewController: UIViewController {
         if signInControl.selectedSegmentIndex == 0 {
             
             didSignUpClick()
-            
         } else {
             
             didSignInClick()
@@ -87,7 +77,7 @@ class AuthentificationViewController: UIViewController {
     }
     
     @IBAction func passwordEditBegan(_ sender: UITextField) {
-        passWordLabel.text = ""
+        passwordTextView.text = ""
         passwordTextView.textColor = UIColor.black
     }
     
@@ -203,6 +193,7 @@ class AuthentificationViewController: UIViewController {
         }
         if password.count >= 6 {
             passwordField.textColor = UIColor.blue
+            setWarning(for: passWordLabel, message: "")
             return true
         } else {
             passwordField.textColor = UIColor.red
@@ -251,7 +242,6 @@ class AuthentificationViewController: UIViewController {
     }
     
     
-    
     private func changeSignButtonState(isEnabled: Bool) {
         
         signInButton.isEnabled = isEnabled
@@ -290,47 +280,7 @@ class AuthentificationViewController: UIViewController {
             })
         }
     }
-    
-    
-    
-//    private func setupTapGestureForScrollView() {
-//
-//        let didTap = #selector(didTapScrollView(_:))
-//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: didTap)
-//        scrollView.addGestureRecognizer(tapGestureRecognizer)
-//
-//    }
-//
-//
-//
-//    @objc func didTapScrollView(_ sender: UIGestureRecognizer) {
-//        emailTextView.resignFirstResponder()
-//        passwordTextView.resignFirstResponder()
-//        confirmPasswordTextView.resignFirstResponder()
-//    }
 
-    private func removeKeyboardObservers() {
-        
-        NotificationCenter.default.removeObserver(self)
-        
-    }
-
-    private func keyboardWillShow(notification: Notification) {
-        guard let userInfo = notification.userInfo, let frame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            
-            return
-        }
-        
-        let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: frame.height, right: 0)
-        scrollView.contentInset = contentInset
-        
-    }
-    
-    
-    
-    private func keyboardWillHide(notification: Notification) {
-        scrollView.contentInset = UIEdgeInsets.zero
-    }
 
     private func showIndicatorProgress() {
         activityIndicator.startAnimating()
