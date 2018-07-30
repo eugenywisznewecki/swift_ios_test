@@ -1,0 +1,127 @@
+//
+//  FirstViewController.swift
+//  my_testProj
+//
+//  Created by mac-130-71 on 7/20/18.
+//  Copyright © 2018 mac-130-71. All rights reserved.
+//
+
+import UIKit
+import MapKit
+
+class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    var imagePicker = UIImagePickerController()
+    
+    var photo: Photo?
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var map: MKMapView!
+    
+    
+    @IBAction func cameraButton(_ sender: UIButton) {
+        
+       showPictureOption()
+    }
+    
+    
+    func showPictureOption(){
+        let alertController = UIAlertController(title: "some title", message: "some message",
+                                                preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "Take a picture", style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Choose From Library", style: .default, handler: {
+            ( action: UIAlertAction!) in self.choosePhoto()
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alertController, animated: true)
+    }
+    
+    func choosePhoto(){
+        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        imagePicker.allowsEditing = false
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        imagePicker.delegate = self
+        
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.1, 0.1)
+        let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(53.888381, 27.544470)
+        let region = MKCoordinateRegion(center: location, span: span)
+        
+        map.setRegion(region, animated: true)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = "title annotation"
+        annotation.subtitle = "subtitle"
+        map.addAnnotation(annotation)
+
+        
+        //longPress
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotationOnLongPress(gesture:)))
+        longPressGesture.minimumPressDuration = 1.0
+        map.addGestureRecognizer(longPressGesture)
+        
+        
+    }
+    
+    @objc func addAnnotationOnLongPress(gesture: UILongPressGestureRecognizer) {
+        
+        if gesture.state == .ended {
+            let point = gesture.location(in: map)
+            let coordinate = map.convert(point, toCoordinateFrom: map)
+            
+            print(coordinate)
+            
+            var annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+
+            //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            //let controller = storyboard.instantiateViewController(withIdentifier: "DetailController")
+            //self.present(controller, animated: true, completion: nil)
+            
+            showPictureOption()
+            
+            annotation.title = "new title"
+            annotation.subtitle = "new subtitle"
+            map.addAnnotation(annotation)
+        }
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailController = segue.destination as? DetailViewController {
+            detailController.photo = self.photo
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let controller = DetailViewController()
+
+            photo = Photo(name: "photoNEW",
+                               date: Date.parse("2018-11-11 06:50:16"),
+                               image: pickedImage,
+                               category: Category.Default)
+
+        }
+
+        dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "DetailSegue", sender: self)
+
+    }
+}
+
