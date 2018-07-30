@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		014E26E6210F2E9B0084B4A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 014E26E5210F2E9A0084B4A8 /* GoogleService-Info.plist */; };
+		014E26E8210F36860084B4A8 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014E26E7210F36860084B4A8 /* Const.swift */; };
 		015AED3B2101D4680061F5FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015AED3A2101D4680061F5FF /* AppDelegate.swift */; };
 		015AED3D2101D4680061F5FF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015AED3C2101D4680061F5FF /* MapViewController.swift */; };
 		015AED422101D4680061F5FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 015AED402101D4680061F5FF /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		014E26E5210F2E9A0084B4A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		014E26E7210F36860084B4A8 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		015AED372101D4680061F5FF /* my_testProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = my_testProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		015AED3A2101D4680061F5FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		015AED3C2101D4680061F5FF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		015AED392101D4680061F5FF /* my_testProj */ = {
 			isa = PBXGroup;
 			children = (
+				01917B1F210F43B10057BACB /* Utils */,
 				014E26E5210F2E9A0084B4A8 /* GoogleService-Info.plist */,
 				01AF2569210F07A800F8FC34 /* Resources */,
 				837960F5210DF97900A315FC /* View */,
@@ -90,6 +93,22 @@
 				015AED482101D4690061F5FF /* Info.plist */,
 			);
 			path = my_testProj;
+			sourceTree = "<group>";
+		};
+		01917B1F210F43B10057BACB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				01917B20210F43BA0057BACB /* Const */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		01917B20210F43BA0057BACB /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				014E26E7210F36860084B4A8 /* Const.swift */,
+			);
+			path = Const;
 			sourceTree = "<group>";
 		};
 		01AF2569210F07A800F8FC34 /* Resources */ = {
@@ -286,6 +305,7 @@
 				015AED3D2101D4680061F5FF /* MapViewController.swift in Sources */,
 				015C3B6821020B5C00F70CE5 /* PhotoViewController.swift in Sources */,
 				015C3B6F210754C100F70CE5 /* Category.swift in Sources */,
+				014E26E8210F36860084B4A8 /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

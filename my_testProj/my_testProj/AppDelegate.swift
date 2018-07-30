@@ -19,8 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         
+      let mapStoryboard = UIStoryboard(name: "Authentification", bundle: nil)
+        
+        let sss = mapStoryboard.instantiateInitialViewController()
+        window?.rootViewController = sss
+        
+
         FirebaseApp.configure()
-        //
+        
         return true
     }
 
