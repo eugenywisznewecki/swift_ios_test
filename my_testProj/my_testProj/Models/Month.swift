@@ -12,6 +12,5 @@ import Foundation
 struct Month: Hashable{
     var year: Int
     var month: Int
-    
-    
+
 }

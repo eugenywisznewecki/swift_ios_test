@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		014E26E6210F2E9B0084B4A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 014E26E5210F2E9A0084B4A8 /* GoogleService-Info.plist */; };
 		015AED3B2101D4680061F5FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015AED3A2101D4680061F5FF /* AppDelegate.swift */; };
 		015AED3D2101D4680061F5FF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015AED3C2101D4680061F5FF /* MapViewController.swift */; };
 		015AED422101D4680061F5FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 015AED402101D4680061F5FF /* Main.storyboard */; };
@@ -19,10 +20,13 @@
 		015C3B6D21071A5100F70CE5 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015C3B6C21071A5100F70CE5 /* Month.swift */; };
 		015C3B6F210754C100F70CE5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015C3B6E210754C100F70CE5 /* Category.swift */; };
 		01863B702108A747008A2CA1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01863B6F2108A747008A2CA1 /* DetailViewController.swift */; };
+		01AF256C210F236A00F8FC34 /* AuthentificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AF256B210F236A00F8FC34 /* AuthentificationViewController.swift */; };
+		01AF256E210F238F00F8FC34 /* Authentification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01AF256D210F238F00F8FC34 /* Authentification.storyboard */; };
 		B2CA88FA1F9F1C2939BF0BF0 /* Pods_my_testProj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA67548A99979A3925AB6610 /* Pods_my_testProj.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		014E26E5210F2E9A0084B4A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		015AED372101D4680061F5FF /* my_testProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = my_testProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		015AED3A2101D4680061F5FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		015AED3C2101D4680061F5FF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +41,8 @@
 		015C3B6C21071A5100F70CE5 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		015C3B6E210754C100F70CE5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		01863B6F2108A747008A2CA1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		01AF256B210F236A00F8FC34 /* AuthentificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthentificationViewController.swift; sourceTree = "<group>"; };
+		01AF256D210F238F00F8FC34 /* Authentification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentification.storyboard; sourceTree = "<group>"; };
 		58B3ACB80CE81DB8DFF5E7E0 /* Pods-my_testProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-my_testProj.debug.xcconfig"; path = "Pods/Target Support Files/Pods-my_testProj/Pods-my_testProj.debug.xcconfig"; sourceTree = "<group>"; };
 		5C566017363AB36443433EED /* Pods-my_testProj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-my_testProj.release.xcconfig"; path = "Pods/Target Support Files/Pods-my_testProj/Pods-my_testProj.release.xcconfig"; sourceTree = "<group>"; };
 		DA67548A99979A3925AB6610 /* Pods_my_testProj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_my_testProj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,15 +81,32 @@
 		015AED392101D4680061F5FF /* my_testProj */ = {
 			isa = PBXGroup;
 			children = (
+				014E26E5210F2E9A0084B4A8 /* GoogleService-Info.plist */,
+				01AF2569210F07A800F8FC34 /* Resources */,
 				837960F5210DF97900A315FC /* View */,
 				837960F4210DF95700A315FC /* Extensions */,
 				837960F3210DF75D00A315FC /* Models */,
 				015AED3A2101D4680061F5FF /* AppDelegate.swift */,
-				015AED432101D4690061F5FF /* Assets.xcassets */,
-				015AED452101D4690061F5FF /* LaunchScreen.storyboard */,
 				015AED482101D4690061F5FF /* Info.plist */,
 			);
 			path = my_testProj;
+			sourceTree = "<group>";
+		};
+		01AF2569210F07A800F8FC34 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				015AED432101D4690061F5FF /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		01AF256A210F233E00F8FC34 /* Authentification */ = {
+			isa = PBXGroup;
+			children = (
+				01AF256B210F236A00F8FC34 /* AuthentificationViewController.swift */,
+				01AF256D210F238F00F8FC34 /* Authentification.storyboard */,
+			);
+			path = Authentification;
 			sourceTree = "<group>";
 		};
 		837960F3210DF75D00A315FC /* Models */ = {
@@ -107,6 +130,8 @@
 		837960F5210DF97900A315FC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				01AF256A210F233E00F8FC34 /* Authentification */,
+				015AED452101D4690061F5FF /* LaunchScreen.storyboard */,
 				015AED3C2101D4680061F5FF /* MapViewController.swift */,
 				015AED402101D4680061F5FF /* Main.storyboard */,
 				015AED4E2101DD700061F5FF /* CategoryViewController.swift */,
@@ -194,6 +219,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				015AED472101D4690061F5FF /* LaunchScreen.storyboard in Resources */,
+				01AF256E210F238F00F8FC34 /* Authentification.storyboard in Resources */,
+				014E26E6210F2E9B0084B4A8 /* GoogleService-Info.plist in Resources */,
 				015AED442101D4690061F5FF /* Assets.xcassets in Resources */,
 				015AED422101D4680061F5FF /* Main.storyboard in Resources */,
 			);
@@ -209,11 +236,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-my_testProj/Pods-my_testProj-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -250,6 +279,7 @@
 				01863B702108A747008A2CA1 /* DetailViewController.swift in Sources */,
 				015C3B662101FA7F00F70CE5 /* Photo.swift in Sources */,
 				015C3B6A210715A400F70CE5 /* Extensions.swift in Sources */,
+				01AF256C210F236A00F8FC34 /* AuthentificationViewController.swift in Sources */,
 				015C3B6D21071A5100F70CE5 /* Month.swift in Sources */,
 				015AED3B2101D4680061F5FF /* AppDelegate.swift in Sources */,
 				015AED4F2101DD700061F5FF /* CategoryViewController.swift in Sources */,
@@ -407,7 +437,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "testorg.my-testProj";
+				PRODUCT_BUNDLE_IDENTIFIER = "ink.testorg.my-testProj";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -426,7 +456,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "testorg.my-testProj";
+				PRODUCT_BUNDLE_IDENTIFIER = "ink.testorg.my-testProj";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

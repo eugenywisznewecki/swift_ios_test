@@ -28,11 +28,14 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     @IBAction func doneButton(_ sender: UIButton) {
        
-        let photo =  Photo(name: editTextView.text,
-                           date: currDate,
-                           image: imageView.image!,
-                           category: Category(rawValue: (categoryButton.titleLabel?.text)!)!)
-        
+        let photo =  Photo(
+            name: editTextView.text,
+            date: currDate,
+             image: imageView.image!,
+            category: .Friends
+           
+                          )
+
         print(photo)
     }
     

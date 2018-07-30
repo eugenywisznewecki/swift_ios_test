@@ -156,11 +156,4 @@ static func printPhotosTest(_ photoArray: [Photo]){
     }
    
 }
-
-
-
 }
-
-let randomDates:[Date] = [Date.parse("2014-05-20"), Date.parse("2012-07-21"), Date.parse("2012-07-01"), Date.parse("2017-01-24"), Date.parse("2017-01-11"), Date.parse("2017-01-14"), Date.parse("2000-01-02"), Date.parse("2000-05-20")]
-
-let resultData:[[Date]] = DateArrayConversionHelper.sortDateByMonth(dateArray: randomDates)

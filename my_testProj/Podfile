@@ -7,5 +7,7 @@ target 'my_testProj' do
 
   # Pods for my_testProj
   pod 'Firebase', '>= 2.5.1'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
 
 end
