@@ -19,12 +19,10 @@ extension Date {
     
     static func from(year: Int, month: Int, day: Int) -> Date {
         let gregorianCalendar = NSCalendar(calendarIdentifier: .gregorian)!
-        
         var dateComponents = DateComponents()
         dateComponents.year = year
         dateComponents.month = month
         dateComponents.day = day
-        
         let date:Date = gregorianCalendar.date(from: dateComponents)!
         return date
     }
@@ -33,7 +31,6 @@ extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = NSTimeZone.default
         dateFormatter.dateFormat = format
-        
         let date = dateFormatter.date(from: string)!
         return date
     }
@@ -44,13 +41,9 @@ extension Date {
         formatter.dateFormat = "yyyy-MM-dd"
         let myString = formatter.string(from: date)
         let yourDate = formatter.date(from: myString)
-        
         formatter.dateFormat = "dd-MMM-yyyy"
-        
         let myStringafd = formatter.string(from: yourDate!)
-        
         print(myStringafd)
-        
         return myStringafd
         
     }
@@ -58,11 +51,9 @@ extension Date {
     public func monthYearDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
-        
         let monthYearDatePattern = "MMMM yyyy"
         dateFormatter.dateFormat = monthYearDatePattern
         print("moth+year: \(dateFormatter.string(from: self))")
-
         return dateFormatter.string(from: self)
     }
 }

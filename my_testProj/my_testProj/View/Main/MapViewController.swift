@@ -12,18 +12,13 @@ import MapKit
 class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var imagePicker = UIImagePickerController()
-    
     var photo: Photo?
     
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var map: MKMapView!
     
-    
-    @IBAction func cameraButton(_ sender: UIButton) {
-        
-       showPictureOption()
+    @IBAction func cameraOnClick(_ sender: UIButton) {
+         showPictureOption()
     }
-    
     
     func showPictureOption(){
         let alertController = UIAlertController(title: "some title", message: "some message",

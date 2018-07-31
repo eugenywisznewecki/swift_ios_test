@@ -25,6 +25,7 @@
 		01A15F1B211067C000A7A0A7 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A15F1A211067C000A7A0A7 /* CategoryViewController.swift */; };
 		01A15F1E21107B9A00A7A0A7 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A15F1D21107B9A00A7A0A7 /* Repo.swift */; };
 		01A15F202110826400A7A0A7 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A15F1F2110826400A7A0A7 /* Date.swift */; };
+		01A15F242110BD6300A7A0A7 /* NewPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A15F232110BD6300A7A0A7 /* NewPhotoViewController.swift */; };
 		01AF256C210F236A00F8FC34 /* AuthentificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AF256B210F236A00F8FC34 /* AuthentificationViewController.swift */; };
 		01AF256E210F238F00F8FC34 /* Authentification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01AF256D210F238F00F8FC34 /* Authentification.storyboard */; };
 		B2CA88FA1F9F1C2939BF0BF0 /* Pods_my_testProj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA67548A99979A3925AB6610 /* Pods_my_testProj.framework */; };
@@ -51,6 +52,7 @@
 		01A15F1A211067C000A7A0A7 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		01A15F1D21107B9A00A7A0A7 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		01A15F1F2110826400A7A0A7 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		01A15F232110BD6300A7A0A7 /* NewPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPhotoViewController.swift; sourceTree = "<group>"; };
 		01AF256B210F236A00F8FC34 /* AuthentificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthentificationViewController.swift; sourceTree = "<group>"; };
 		01AF256D210F238F00F8FC34 /* Authentification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentification.storyboard; sourceTree = "<group>"; };
 		58B3ACB80CE81DB8DFF5E7E0 /* Pods-my_testProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-my_testProj.debug.xcconfig"; path = "Pods/Target Support Files/Pods-my_testProj/Pods-my_testProj.debug.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				015AED3C2101D4680061F5FF /* MapViewController.swift */,
 				015AED402101D4680061F5FF /* Main.storyboard */,
 				01A15F1A211067C000A7A0A7 /* CategoryViewController.swift */,
+				01A15F232110BD6300A7A0A7 /* NewPhotoViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				015C3B6821020B5C00F70CE5 /* PhotoViewController.swift in Sources */,
 				01A15F1B211067C000A7A0A7 /* CategoryViewController.swift in Sources */,
 				015C3B6F210754C100F70CE5 /* Category.swift in Sources */,
+				01A15F242110BD6300A7A0A7 /* NewPhotoViewController.swift in Sources */,
 				014E26E8210F36860084B4A8 /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
