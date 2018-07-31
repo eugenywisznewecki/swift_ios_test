@@ -66,6 +66,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0104797B21105804002E79F5 /* Laucnh */ = {
+			isa = PBXGroup;
+			children = (
+				015AED452101D4690061F5FF /* LaunchScreen.storyboard */,
+			);
+			path = Laucnh;
+			sourceTree = "<group>";
+		};
+		0104797C21105A7A002E79F5 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				015AED3C2101D4680061F5FF /* MapViewController.swift */,
+				015AED402101D4680061F5FF /* Main.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		014C5E56210F607E006D3DCB /* DetailPhoto */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,11 +179,10 @@
 		837960F5210DF97900A315FC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0104797C21105A7A002E79F5 /* Main */,
+				0104797B21105804002E79F5 /* Laucnh */,
 				014C5E56210F607E006D3DCB /* DetailPhoto */,
 				01AF256A210F233E00F8FC34 /* Authentification */,
-				015AED452101D4690061F5FF /* LaunchScreen.storyboard */,
-				015AED3C2101D4680061F5FF /* MapViewController.swift */,
-				015AED402101D4680061F5FF /* Main.storyboard */,
 				015AED4E2101DD700061F5FF /* CategoryViewController.swift */,
 				015C3B6721020B5C00F70CE5 /* PhotoViewController.swift */,
 				01863B6F2108A747008A2CA1 /* DetailViewController.swift */,

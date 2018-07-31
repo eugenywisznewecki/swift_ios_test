@@ -60,15 +60,12 @@ extension Date {
     static func normalDate(date: Date) -> String {
         
         let formatter = DateFormatter()
-      
         formatter.dateFormat = "yyyy-MM-dd"
-        
         let myString = formatter.string(from: date)
-      
         let yourDate = formatter.date(from: myString)
         
         formatter.dateFormat = "dd-MMM-yyyy"
-    
+        
         let myStringafd = formatter.string(from: yourDate!)
         
         print(myStringafd)
@@ -76,8 +73,6 @@ extension Date {
         return myStringafd
         
     }
-    
-    
 }
 
 class DateArrayConversionHelper {
@@ -145,15 +140,15 @@ class DateArrayConversionHelper {
     //            }
     //        }
     //
-//    return resultDictionary
-//}
-
-static func printPhotosTest(_ photoArray: [Photo]){
+    //    return resultDictionary
+    //}
     
-    for i in 0 ..< (photoArray.count){
-        print("year + \(photoArray[i].date).yearInt)")
-        print("month + \(photoArray[i].date).monthInt)")
+    static func printPhotosTest(_ photoArray: [Photo]){
+        
+        for i in 0 ..< (photoArray.count){
+            print("year + \(photoArray[i].date).yearInt)")
+            print("month + \(photoArray[i].date).monthInt)")
+        }
+        
     }
-   
-}
 }
