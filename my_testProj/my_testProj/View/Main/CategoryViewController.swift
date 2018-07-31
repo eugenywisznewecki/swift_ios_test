@@ -10,22 +10,20 @@ import UIKit
 
 class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-
-
+    @IBOutlet weak var searchView: UISearchBar!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    
     @IBOutlet weak var tableView: UITableView!
-    
     
     private var sections = [String]()
     private var photosbySection = [String : [Photo]]()
     private var photosWithTag = [Photo]()
     
-    
     private var photoArray = [Photo]()
     
-    
- 
+    @IBAction func categoryClick(_ sender: UIButton) {
+        //categoryChooser show modally
+        
+    }
     
     
     override func viewDidLoad() {
@@ -69,11 +67,12 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
                            image: UIImage(named: "download3")!,
                            category: Category.Default)
         photoArray.append(photo5);
-        
-       
+
         
         dividePhotosIntoSections(from: photoArray)
-        
+
+        let tagsString = "home phoro friends of mine #fooo $eeee $ss @0000 #sssss"
+        makeSearchTagsFromText(for: tagsString)
         
         footer()
         definesPresentationContext = true
@@ -93,6 +92,34 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     
+    private func isFilterNow() -> Bool {
+        return searchView.text?.isEmpty ?? true
+    }
+    
+    
+    // WARN - makes tags from everything
+    private func makeSearchTagsFromText(for findText: String) -> [String]{
+        let findTags = findText
+      
+        var tags = findTags.components(separatedBy: " ").filter { !$0.isEmpty }
+        
+        tags = tags.compactMap { (tag) -> String in
+            if tag.first == "#" {
+                return tag
+            }
+            else {
+                return "#\(tag)"
+            }
+        }
+        print(tags)
+        return tags
+    }
+    
+//    private func findTagsInText(for textToFind: String) -> [String]{
+//
+//
+//    }
+
     
     private func dividePhotosIntoSections(from photos: [Photo]){
         for photo in photos {
