@@ -72,6 +72,8 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         
        
         
+        dividePhotosIntoSections(from: photoArray)
+        
         
         footer()
         definesPresentationContext = true
@@ -84,21 +86,36 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         sections.removeAll()
         photosWithTag.removeAll()
         photosbySection.removeAll()
-        
-
-        
-        
+       
+        //downloadPhotos
+      
+        super.viewWillAppear(animated)
     }
     
-    private func 
     
     
+    private func dividePhotosIntoSections(from photos: [Photo]){
+        for photo in photos {
+            let sectionTitle = photo.date.monthYearDate()
+            if photosbySection[sectionTitle] != nil {
+                photosbySection[sectionTitle]?.append(photo)
+            }
+            else {
+                sections.append(sectionTitle)
+                photosbySection[sectionTitle] = [photo]
+            }
+        }
+    }
+    
+    private func updateViewTable(){
+        
+    }
+
     
     private func footer(){
-    
-    let footer = UIView()
-     footer.backgroundColor = UIColor.white.withAlphaComponent(0.0)
-     tableView.tableFooterView = footer
+         let footer = UIView()
+         footer.backgroundColor = UIColor.white.withAlphaComponent(0.0)
+         tableView.tableFooterView = footer
     }
     
     
