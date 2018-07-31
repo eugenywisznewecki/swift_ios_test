@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+// strings - localized
 struct SignUpInOut {
     static let signUp = "Sign up"
     static let signIn = "Sign in"
