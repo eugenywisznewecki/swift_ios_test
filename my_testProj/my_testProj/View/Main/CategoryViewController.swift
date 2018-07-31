@@ -88,7 +88,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
 
     }
     
-    override func viewWillAppear(_ animated: Bool) { 
+    override func viewWillAppear(_ animated: Bool) {
         spinner.startAnimating()
         
         sections.removeAll()
