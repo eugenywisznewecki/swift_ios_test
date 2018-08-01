@@ -36,6 +36,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
+        //SAMPLE array
         let photo1 = Photo(name: "photo1",
                            date: Date.parse("2016-02-02 03:03:16"),
                            image: UIImage(named: "download")!,
@@ -119,6 +120,9 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
                 photosbySection[sectionTitle] = [photo]
             }
         }
+        
+         print("\(sectionsAll)")
+         print("\(photosbySection)")
     }
     
     private func updateViewTable(with photoIn: [Photo]){
@@ -161,9 +165,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
   
     private func makeSearchTagsFromText(for findText: String) -> [String]{
         let findTags = findText
-        
         var tags = findTags.components(separatedBy: " ").filter { !$0.isEmpty }
-        
         tags = tags.compactMap { (tag) -> String in
             if tag.first == "#" {
                 return tag
@@ -182,8 +184,25 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
          tableView.tableFooterView = footer
     }
     
+    private func openFullPhotoView(for photo: Photo){
+        let detailPhotoViewController = UIStoryboard(name: "DetailPhoto", bundle: nil).instantiateViewController(withIdentifier: "DetailPhotoViewController") as! DetailPhotoViewController
+        detailPhotoViewController.photo = photo
+        self.modalPresentationStyle = .fullScreen
+        let rootNavigationController = UINavigationController(rootViewController: detailPhotoViewController)
+        present(rootNavigationController, animated: true)
+    }
     
-    //MARK: - table methods of
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "showDetail"){
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let destinationController = segue.destination as! NewPhotoViewController
+                destinationController.photo = photoArray[indexPath.row]
+            }
+        }
+    }
+    
+    
+    //MARK: - table methods
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionsAll.count
     }
@@ -200,16 +219,6 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
                 openFullPhotoView(for: photo)
             }
         }
-    }
-    
-    private func openFullPhotoView(for photo: Photo){
-       
-        let detailPhotoViewController = UIStoryboard(name: "DetailPhoto", bundle: nil).instantiateViewController(withIdentifier: "DetailPhotoViewController") as! DetailPhotoViewController
-        detailPhotoViewController.photo = photo
-        self.modalPresentationStyle = .fullScreen
-        let rootNavigationController = UINavigationController(rootViewController: detailPhotoViewController)
-        present(rootNavigationController, animated: true)
-
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -235,15 +244,6 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.labelTitle.text = photo.name
         cell.laberDate.text = "\(photo.date.shortDate()) / \(photo.category.rawValue.uppercased())"
         return cell
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "showDetail"){
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let destinationController = segue.destination as! NewPhotoViewController
-                destinationController.photo = photoArray[indexPath.row]
-            }
-        }
     }
     
     //MARK: SearchMethods

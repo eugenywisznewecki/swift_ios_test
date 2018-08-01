@@ -14,14 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-// onCreate APP
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
-//        let mapStoryboard = UIStoryboard(name: "DetailPhoto", bundle: nil)
-//        let sss = mapStoryboard.instantiateInitialViewController()
-//        window?.rootViewController = sss
-        
         FirebaseApp.configure()
         return true
     }

@@ -23,16 +23,6 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
     private var navigationMode: MKUserTrackingMode = .follow
     private let defaultRadius = 2000.0
     
-    var currentLocation: CLLocation? = nil {
-        didSet{
-            map.showsUserLocation = currentLocation != nil ? true : false
-            if navigationMode == .follow && map.showsUserLocation
-            {
-                map.setCenter(currentLocation!.coordinate, animated: true)
-            }
-        }
-    }
-    
     @IBAction func categoryOnClick(_ sender: UIButton) {
         
         let catStoryboard = UIStoryboard(name: "PhotoCategories", bundle: nil).instantiateViewController(withIdentifier: "PhotoCategories") as UIViewController
@@ -46,6 +36,7 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
     @IBAction func cameraOnClick(_ sender: UIButton) {
         
         showPictureOption()
+        
         //        if currentLocation != nil {
         //            // photo = Photo(latitude: Double(currentLocation!.coordinate.latitude), longitude: Double(currentLocation!.coordinate.longitude))
         //            showPictureOption()
@@ -54,6 +45,45 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
         //            self.showToast(with: "Have not locations", message: nil)
         //        }
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //location Permission
+        if CLLocationManager.locationServicesEnabled() {
+            checkLocationPermissions()
+        }
+        
+        //location manager
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        
+        imagePicker.delegate = self
+        map.delegate = self
+        
+        //moving the map
+        if let userLocation = locationManager.location {
+            move(to: userLocation, with: defaultRadius)
+            map.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
+        }
+        
+        checkLocationStatusAuth()
+        
+        setGestuesForMap()
+        
+    }
+    
+    var currentLocation: CLLocation? = nil {
+        didSet{
+            map.showsUserLocation = currentLocation != nil ? true : false
+            if navigationMode == .follow && map.showsUserLocation
+            {
+                map.setCenter(currentLocation!.coordinate, animated: true)
+            }
+        }
+    }
+ 
     
     func showPictureOption(){
         let alertController = UIAlertController(title: nil, message: nil,
@@ -83,42 +113,13 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
         imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         present(imagePicker, animated: true, completion: nil)
     }
-    
-    // MARK: - DID LOAD
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //location Permission
-        if CLLocationManager.locationServicesEnabled() {
-            checkLocationPermissions()
-        }
-        
-        //location manager
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        
-        imagePicker.delegate = self
-        map.delegate = self
-        
-        //moving the map
-        if let userLocation = locationManager.location {
-            move(to: userLocation, with: defaultRadius)
-            map.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
-        }
-        
-        checkLocationStatusAuth()
-        
-        setGestuesForMap()
 
-    }
     
     private func  setGestuesForMap(){
         //longPress
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotationOnLongPress(gesture:)))
         longPressGesture.minimumPressDuration = 1.0
         map.addGestureRecognizer(longPressGesture)
-        
         
         //drag
         let didDragMap = #selector(didDragMap(_:))
@@ -175,21 +176,13 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
         if gesture.state == .ended {
             let point = gesture.location(in: map)
             let coordinate = map.convert(point, toCoordinateFrom: map)
-            
-            print(coordinate)
-            
-            var annotation = MKPointAnnotation()
+
+            let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
-            
-            //let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            //let controller = storyboard.instantiateViewController(withIdentifier: "DetailController")
-            //self.present(controller, animated: true, completion: nil)
+            annotation.title = "new point"
+            map.addAnnotation(annotation)
             
             showPictureOption()
-            
-            annotation.title = "new title"
-            annotation.subtitle = "new subtitle"
-            map.addAnnotation(annotation)
         }
     }
     
@@ -215,7 +208,7 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     
-    // from SOF - TODO read about this
+    // from SOF - TODO: read about this
     private func checkLocationPermissions() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways, .authorizedWhenInUse:

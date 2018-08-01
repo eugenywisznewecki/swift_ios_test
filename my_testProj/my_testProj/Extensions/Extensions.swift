@@ -57,47 +57,6 @@ class DateArrayConversionHelper {
         return resultArray
     }
     
-    //    static func sortPhotosByMonth(_ photosArray: [Photo]) -> [Month: [Photo]]  {
-    //
-    //        print("no sorted: \(photosArray)")
-    //
-    //        var photoArrayIn:[Photo] = photosArray.sorted(by: {$0.date < $1.date})
-    //        print("/n sorted: \(photoArrayIn)")
-    //
-    //        var resultDictionary:[Month: [Photo]] = [Month: [Photo]]()
-    //
-    //
-    //
-    //        for i in 0..<(photoArrayIn.count){
-    //            print(i)
-    //
-    //            var month: Month = Month(year: photoArrayIn[i].date.yearInt, month:
-    //                photoArrayIn[i].date.monthInt)
-    //
-    //            var photosInMonth = [Photo]()
-    //
-    //            resultDictionary[month] =
-    //
-    //        }
-    
-    //        for i in 1 ..< (photosArray.count) {
-    //
-    //
-    //
-    //            if (Date.parse(photosArray[i].date).yearInt == Date.parse(photosArray[i-1].date).yearInt)
-    //                && (Date.parse(photosArray[i].date).monthInt == Date.parse(photosArray[i-1].date).monthInt) {
-    //                resultDictionary[k].append(inputArray[i])
-    //            }
-    //            else {
-    //                k = k+1
-    //                resultDictionary.append([])
-    //                resultDictionary[k].append(inputArray[i])
-    //            }
-    //        }
-    //
-    //    return resultDictionary
-    //}
-    
     static func printPhotosTest(_ photoArray: [Photo]){
         
         for i in 0 ..< (photoArray.count){

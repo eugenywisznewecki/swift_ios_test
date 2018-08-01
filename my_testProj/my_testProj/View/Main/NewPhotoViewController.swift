@@ -8,14 +8,13 @@
 
 import UIKit
 
-// [WARN ] TODO TASK - make this in XIB-way!
+// [WARN ] TODO: TASK - make this in XIB-way!
 
 class NewPhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate {
     
     var photo: Photo?
     let categories = [Category.Default.rawValue, Category.Friends.rawValue, Category.Nature.rawValue]
-    
-    
+        
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var imageView: UIImageView!
@@ -42,16 +41,9 @@ class NewPhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 )
                 print(samplePhoto)
     }
-
-    
-    //    @IBAction func categoryVIewButton(_ sender: UIButton) {
-    //        pickerView.isHidden = false
-    //    }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
 
         //gesturePhoto to func
         let didClick = #selector(didClickImage(_:))
@@ -66,13 +58,11 @@ class NewPhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         editTextView.delegate = self
         
-        
         //sets the text
         editTextView.layer.cornerRadius = 2
         editTextView.layer.borderColor = UIColor.gray.cgColor
         editTextView.layer.borderWidth = 1
         editTextView.tintColor = UIColor.lightGray
-        
         
         //sets categoryPicker
         let categoryPicker = UIPickerView()

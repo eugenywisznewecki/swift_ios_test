@@ -29,22 +29,16 @@ class AuthentificationViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+    
         activityIndicator.isHidden = true
       
     }
     
-  
-    
     @IBAction func didSingMethodChange(_ sender: UISegmentedControl) {
-
-        
         print(sender.selectedSegmentIndex)
         if signInControl.selectedSegmentIndex == 0 {
             setUpSignUp()
-
         } else {
-            
             setUpSignIn()
         }
     }
@@ -52,12 +46,9 @@ class AuthentificationViewController: UIViewController {
     
     @IBAction func didSignButtonClicked(_ sender: UIButton) {
         if signInControl.selectedSegmentIndex == 0 {
-            
             didSignUpClick()
         } else {
-            
             didSignInClick()
-            
         }
     }
     
@@ -102,30 +93,20 @@ class AuthentificationViewController: UIViewController {
     
     private func setUpSignUp() {
         clearFields()
-        
         signInButton.setTitle(SignUpInOut.signUp, for: .normal)
-        
         changeSignButtonState(isEnabled: false)
-        
         signInControl.selectedSegmentIndex = 0
         confirmPasswordTextView.isHidden = false
     }
     
     
     private func setUpSignIn() {
-        
-       // clearFields()
-       // signInControl.alpha = 1
         signInButton.setTitle(SignUpInOut.signIn, for: .normal)
         changeSignButtonState(isEnabled: false)
-        //signInControl.selectedSegmentIndex = 1
         confirmPasswordTextView.isHidden = true
-        
     }
     
     private func clearFields() {
-        //        what about to clear labels
-        
         emailTextView.text = ""
         passwordTextView.text = ""
         confirmPasswordTextView.text = ""
@@ -139,23 +120,17 @@ class AuthentificationViewController: UIViewController {
         }
     }
     
-    
-    
     private func didSignUpClick() {
-        
         guard let email = emailTextView.text, let password = passwordTextView.text, let confirmPassword = confirmPasswordTextView.text else {
-            
             return
         }
-        
         if password == confirmPassword {
             signUp(for: email, with: password)
         } else
         {
-            // else!
+            //TODO: else!
         }
     }
-
     
     private func didSignInClick() {
         let email = emailTextView.text
@@ -164,32 +139,26 @@ class AuthentificationViewController: UIViewController {
             signIn(with: email!, password: password!)
         }
     }
+ 
     
-    
-    
-    //[WARN] - doesn't work yet
+    //TODO: [WARN] - doesn't work yet
     private func isEmailValid() -> Bool {
-        
         guard let email = emailTextView.text, !email.isEmpty else {
             setWarning(for: emailLabel, message: SignUpInOut.emailIsRequired)
             return false
         }
-     
         //set regular expression for emails here
-        //TODO Google it! )
-
+        //TODO to google it
         return true
-
     }
 
     
     private func isPasswordValid(from passwordField: UITextField) -> Bool {
-        
         guard let password = passwordField.text, !password.isEmpty else {
             setWarning(for: passWordLabel, message: SignUpInOut.passwordIsRequired)
             return false
         }
-        if password.count >= 6 {
+        if password.count >= 6 {                //because of Firebase limit
             passwordField.textColor = UIColor.blue
             setWarning(for: passWordLabel, message: "")
             return true
@@ -202,31 +171,21 @@ class AuthentificationViewController: UIViewController {
 
     
     private func signUp(for email: String, with password: String) {
-        
        showIndicatorProgress()
-        
        authObject.createUser(withEmail: email, password: password, completion: { [weak self] (user, error) in
-            
             self?.hideIndicatorProgress()
-            
             if let errorDescription =  error?.localizedDescription {
                 // make alert dialog with: (with: errorDescription, message: "error")
                 print("\(errorDescription)")
             } else {
                 self?.openMapStoryBoard()
             }
-        
-        print(user)
-            
         })
-        
     }
     
     
     private func signIn(with email: String, password: String) {
-        
         showIndicatorProgress()
-        
         authObject.signIn(withEmail: email, password: password) { [weak self] (user, error) in
             self?.hideIndicatorProgress()
             if let errorDescription =  error?.localizedDescription {
@@ -235,21 +194,15 @@ class AuthentificationViewController: UIViewController {
             } else {
                 self?.openMapStoryBoard()
             }
-            print(user)
         }
     }
     
     
     private func changeSignButtonState(isEnabled: Bool) {
-        
         signInButton.isEnabled = isEnabled
-        
-//        UIView.animate(withDuration: AnimationConstants.fadeTime, animations: { [weak self] in
-//
-//            self?.signButton.alpha = isEnabled ? 1: 0
-//
-//        })
-        
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.signInButton.alpha = isEnabled ? 1: 0
+        })
     }
     
     private func setWarning(for label: UILabel, message: String){
@@ -264,21 +217,17 @@ class AuthentificationViewController: UIViewController {
     
     
     private func openMapStoryBoard() {
-        
         let mapStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let mapController = mapStoryboard.instantiateInitialViewController() as? UITabBarController {
             mapController.modalPresentationStyle = .fullScreen
-
             UIApplication.shared.keyWindow?.rootViewController = mapController
             UIApplication.shared.keyWindow?.makeKeyAndVisible()
-
             self.view.alpha = 0.0
             UIView.animate(withDuration: 0.5, animations: {[weak self] in
                 self?.view.alpha = 1.0
             })
         }
     }
-
 
     private func showIndicatorProgress() {
         activityIndicator.startAnimating()
@@ -287,7 +236,6 @@ class AuthentificationViewController: UIViewController {
     private func hideIndicatorProgress() {
         activityIndicator.stopAnimating()
     }
-    
 }
 
 

@@ -17,8 +17,7 @@ extension UIViewController {
         ac.addAction(ok)
         present(ac, animated: true, completion: nil)
     }
-    
-    
+        
     func setRootWindow() {
         UIApplication.shared.keyWindow?.rootViewController = self
         UIApplication.shared.keyWindow?.makeKeyAndVisible()

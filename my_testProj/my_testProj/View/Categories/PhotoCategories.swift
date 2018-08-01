@@ -29,20 +29,17 @@ class PhotoCategories: UIViewController {
     }
     
     @IBAction func didNatureCategoryClick(_ sender: UIButton) {
-//        Repository.isNatureAllowed = !Repository.isNatureAllowed
-//        sender.isSelected = Repository.isNatureAllowed
+
         updateState(for: sender)
     }
     
     @IBAction func didFriendsCategoryClick(_ sender: UIButton) {
-//        Repository.isFriendsAllowed = !Repository.isFriendsAllowed
-//        sender.isSelected = Repository.isFriendsAllowed
+
         updateState(for: sender)
     }
     
     @IBAction func didDefaultCategoryClick(_ sender: UIButton) {
-//        Repository.isDefaultAllowed = !Repository.isDefaultAllowed
-//        sender.isSelected = Repository.isDefaultAllowed
+
         updateState(for: sender)
     }
     
