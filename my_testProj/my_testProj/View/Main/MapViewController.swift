@@ -11,10 +11,38 @@ import MapKit
 
 class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    var imagePicker = UIImagePickerController()
     var photo: Photo?
     
     @IBOutlet weak var map: MKMapView!
+    @IBOutlet weak var categoryButton: UIButton!
+    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var navigationButton: UIButton!
+    
+    private var imagePicker = UIImagePickerController()
+    private var locationManager: CLLocationManager = CLLocationManager()
+    private var navigationMode: MKUserTrackingMode = .follow
+    private let defaultRadius = 2000.0
+    
+    var currentLocation: CLLocation? = nil {
+        didSet{
+            map.showsUserLocation = currentLocation != nil ? true : false
+            if navigationMode == .follow && map.showsUserLocation
+            {
+                  map.setCenter(currentLocation!.coordinate, animated: true)
+            }
+        }
+    }
+    
+    @IBAction func categoryOnClick(_ sender: UIButton) {
+        
+        let catStoryboard = UIStoryboard(name: "PhotoCategories", bundle: nil).instantiateViewController(withIdentifier: "PhotoCategories") as UIViewController
+        
+        self.modalPresentationStyle = .fullScreen
+        let rootNavigationController = UINavigationController(rootViewController: catStoryboard)
+        present(rootNavigationController, animated: true)
+    }
+    
+  
     
     @IBAction func cameraOnClick(_ sender: UIButton) {
          showPictureOption()

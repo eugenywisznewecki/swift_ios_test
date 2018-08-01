@@ -25,6 +25,9 @@
                                 <rect key="frame" x="28" y="44" width="42" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="ic_categories"/>
+                                <connections>
+                                    <action selector="categoryOnClick:" destination="9pv-A4-QxB" eventType="touchUpInside" id="IE1-Ro-RRX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovC-Jh-spn">
                                 <rect key="frame" x="248" y="42" width="40" height="31"/>
@@ -52,7 +55,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="ic_map" selectedImage="ic_map" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="cameraButton" destination="ovC-Jh-spn" id="XA1-Yz-0lV"/>
+                        <outlet property="categoryButton" destination="uAs-Ke-GX3" id="3r0-PL-dmr"/>
                         <outlet property="map" destination="ulL-VR-vvn" id="Ov6-XS-gjQ"/>
+                        <outlet property="navigationButton" destination="zkV-px-Psx" id="OPZ-ap-UQb"/>
                         <segue destination="3LZ-t6-Q7P" kind="presentation" identifier="DetailSegue" id="ycU-sg-kEa"/>
                     </connections>
                 </viewController>
