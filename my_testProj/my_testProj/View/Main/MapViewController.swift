@@ -110,21 +110,17 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
         checkLocationStatusAuth()
         
         setGestuesForMap()
-        
-        
-        
-        
+
     }
     
     private func  setGestuesForMap(){
-        
         //longPress
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotationOnLongPress(gesture:)))
         longPressGesture.minimumPressDuration = 1.0
         map.addGestureRecognizer(longPressGesture)
         
         
-        //grad
+        //drag
         let didDragMap = #selector(didDragMap(_:))
         let mapDragRecognizer = UIPanGestureRecognizer(target: self, action: didDragMap)
         mapDragRecognizer.delegate = self
@@ -197,30 +193,25 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
         }
     }
     
-    
+    //MARK:- segue jumps
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let detailController = segue.destination as? DetailViewController {
-            detailController.photo = self.photo
+        if let newPhotoController = segue.destination as? NewPhotoViewController {
+            newPhotoController.photo = self.photo
         }
     }
     
+    //MARK: - ImagePICKER here
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            
-            
-            //            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            //            let controller = DetailViewController()
-            
             photo = Photo(name: "photoNEW",
                           date: Date.parse("2018-11-11 06:50:16"),
                           image: pickedImage,
                           category: Category.Default)
             
+            dismiss(animated: true, completion: nil)
+            performSegue(withIdentifier: "newPhotoDetail", sender: self)
         }
-        
-        dismiss(animated: true, completion: nil)
-        performSegue(withIdentifier: "DetailSegue", sender: self)
-        
     }
     
     

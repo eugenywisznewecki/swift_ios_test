@@ -13,14 +13,14 @@ struct Photo{
     
     
 //    var id: String?
-    var name: String = "photo"
+    var name: String?
     var date: Date = Date()
     
-    var image = UIImage()
+    var image: UIImage? = UIImage()
     var category: Category = .Default
 //    var url: URL?
-//    var latitude: Double
-//    var longitude: Double
+//    var latitude: Double = 43.000
+//    var longitude: Double = 53.000
 //
 //
 //    init(latitude: Double, longitude: Double){

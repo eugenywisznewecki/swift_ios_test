@@ -9,7 +9,7 @@
 import Foundation
 
 
-// strings - localized
+// TODO strings - localized
 struct SignUpInOut {
     static let signUp = "Sign up"
     static let signIn = "Sign in"
@@ -19,6 +19,20 @@ struct SignUpInOut {
     static let incorrectEmailWarning = "Incorrect email."
     static let incorrectPasswordWarning = "Incorrect password."
     static let didNotSatisfyConditionPasswordWarning = "Legnth should be more than 6 symbols."
+}
+
+struct AssetsImageName {
+    static let markerNature = "marker_nature"
+    static let markerFriends = "marker_friends"
+    static let markerDefault = "marker_default"
+    static let imagePlaceholder = "ic_placeholder"
+    static let arrowRight = "ic_arrow_right"
+}
+
+struct PhotoPlaceCategoryName {
+    static let friends = "Friends"
+    static let nature = "Nature"
+    static let defaults = "Default"
 }
 
 
