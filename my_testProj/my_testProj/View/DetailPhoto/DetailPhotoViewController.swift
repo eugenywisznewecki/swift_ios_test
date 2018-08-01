@@ -9,33 +9,37 @@
 import UIKit
 
 class DetailPhotoViewController: UIViewController, UIScrollViewDelegate {
-
-
+    
+    
     internal var photo: Photo?
     
+    
     @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var photoView: UIImageView!
+    
     @IBOutlet weak var topView: UIView!
+    
     @IBOutlet weak var bottomView: UIView!
+    
     @IBOutlet weak var titleLabel: UILabel!
+    
     @IBOutlet weak var dateLabel: UILabel!
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
         dismiss(animated: true, completion: {[weak self] in
             print("closed the deltail window")
         })
+        
+        print("pressed")
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        scrollView.delegate = self
         
-        let photo1 = Photo(name: "photo1",
-                           date: Date.parse("2016-02-02 03:03:16"),
-                           image: UIImage(named: "download")!,
-                           category: Category.Friends )
-        photo = photo1
+        scrollView.delegate = self
         
         if (photo != nil){
             photoView.sizeToFit()
@@ -44,11 +48,17 @@ class DetailPhotoViewController: UIViewController, UIScrollViewDelegate {
             dateLabel.text = photo?.date.monthString
             
         }
-
+        
         startTapGesture()
         startUpDownViews()
-
+        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     
     private func startTapGesture(){
         
@@ -66,27 +76,22 @@ class DetailPhotoViewController: UIViewController, UIScrollViewDelegate {
     @objc private func singleTap() {
         if (topView.isHidden && bottomView.isHidden){
             UIView.animate(withDuration: 0.3, animations: { [weak self] in
-                
                 self?.bottomView.alpha = 1.0
                 self?.topView.alpha = 1.0
             })
-            
-            topView.isHidden = true
-            bottomView.isHidden = true
-            
+            topView.isHidden = false
+            bottomView.isHidden = false
         }
         else {
             UIView.animate(withDuration: 0.3, animations: {[weak self] in
                 self?.bottomView.alpha = 0
                 self?.bottomView.alpha = 0
             })
-            topView.isHidden = false
-            bottomView.isHidden = false
-            
+            topView.isHidden = true
+            bottomView.isHidden = true
         }
-        
     }
-
+    
     @objc private func doubleTap(recognizer: UITapGestureRecognizer) {
         
         if(scrollView.zoomScale == scrollView.minimumZoomScale){
@@ -104,30 +109,30 @@ class DetailPhotoViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    private func   startUpDownViews(){
+    private func startUpDownViews(){
         
-    let backGroundColor = UIColor.black.withAlphaComponent(0.30)
-    
+        let backGroundColor = UIColor.black.withAlphaComponent(0.5)
+        
         let gradientUp = CAGradientLayer()
         gradientUp.frame.size = topView.layer.preferredFrameSize()
         gradientUp.colors = [backGroundColor.cgColor, UIColor.clear.cgColor]
-        gradientUp.locations = [0.85, 1]
+        gradientUp.locations = [0.5, 1.0]
         topView.layer.insertSublayer(gradientUp, at: 0)
         
         let gradientDown = CAGradientLayer()
         gradientDown.frame.size = bottomView.layer.preferredFrameSize()
-        gradientDown.colors = [backGroundColor.cgColor, UIColor.clear.cgColor]
-        gradientDown.locations = [0, 0.15]
+        gradientDown.colors = [UIColor.clear.cgColor, backGroundColor.cgColor]
+        gradientDown.locations = [0, 0.5]
         bottomView.layer.insertSublayer(gradientDown, at: 0)
         
     }
     
-   
-        func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-            return photoView;
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return photoView;
     }
     
-   
+    
 }
 
 
