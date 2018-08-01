@@ -8,13 +8,14 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+//TODO: mistake in logic
+class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var searchView: UISearchBar!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
-    private var sections = [String]()
+    private var sectionsAll = [String]()
     private var photosbySection = [String : [Photo]]()
     private var photosWithTag = [Photo]()
     
@@ -31,6 +32,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         
         tableView.delegate = self
         tableView.dataSource = self
+        searchView.delegate = self
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
@@ -39,50 +41,59 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
                            image: UIImage(named: "download")!,
                            category: Category.Friends )
         
-        photosWithTag.append(photo1);
+        photoArray.append(photo1);
         
-        let photo2 = Photo(name: "photo2",
+        let photo2 = Photo(name: "photo2 222",
                            date: Date.parse("2015-05-14 03:16:16"),
                            image: UIImage(named: "download1")!,
                            category: Category.Nature)
-        photosWithTag.append(photo2);
+        photoArray.append(photo2);
         
-        let photo3 = Photo(name: "photo3",
+        let photo3 = Photo(name: "photo3 mmm",
                            date: Date.parse("2014-04-28 06:50:16"),
                            image: UIImage(named: "download3")!,
                            category: Category.Friends)
-        photosWithTag.append(photo3);
+        photoArray.append(photo3);
         
         
-        let photo4 = Photo(name: "photo4",
+        let photo4 = Photo(name: "photo4 tag",
                            date: Date.parse("2015-01-14 03:16:16"),
                            image: UIImage(named: "download1")!,
                            category: Category.Nature)
-        photosWithTag.append(photo4);
+        photoArray.append(photo4);
         
-        let photo33 = Photo(name: "photo3",
+        let photo33 = Photo(name: "photo3 #tag",
                            date: Date.parse("2014-04-28 06:50:16"),
                            image: UIImage(named: "download3")!,
                            category: Category.Friends)
-        photosWithTag.append(photo33);
-        
+        photoArray.append(photo33);
         
         let photo43 = Photo(name: "photo4",
                            date: Date.parse("2015-01-14 03:16:16"),
                            image: UIImage(named: "download1")!,
                            category: Category.Nature)
-        photosWithTag.append(photo43);
-        
-        
-        let photo5 = Photo(name: "photo5",
+        photoArray.append(photo43);
+
+        let photo5 = Photo(name: "photo5 #mmm",
                            date: Date.parse("2011-02-12 06:50:16"),
                            image: UIImage(named: "download3")!,
                            category: Category.Default)
-        photosWithTag.append(photo5);
+        photoArray.append(photo5);
         
+        let photo6 = Photo(name: "photo6",
+                           date: Date.parse("2011-02-12 06:50:16"),
+                           image: UIImage(named: "download3")!,
+                           category: Category.Default)
+        photoArray.append(photo6);
         
-        dividePhotosIntoSections(from: photosWithTag)
+        let photo7 = Photo(name: "photo7",
+                           date: Date.parse("2011-02-12 06:50:16"),
+                           image: UIImage(named: "download3")!,
+                           category: Category.Default)
+        photoArray.append(photo7);
         
+       dividePhotosIntoSections(from: photoArray)
+
         footer()
         definesPresentationContext = true
 
@@ -90,30 +101,24 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         spinner.startAnimating()
-        
-        sections.removeAll()
-        photosWithTag.removeAll()
-        photosbySection.removeAll()
-       
+
         //downloadPhotos
-      
+
         super.viewWillAppear(animated)
     }
 
-    
+
     private func dividePhotosIntoSections(from photos: [Photo]){
         for photo in photos {
             let sectionTitle = photo.date.monthYearDate()
             if photosbySection[sectionTitle] != nil {
-                photosbySection[sectionTitle]?.append(photo)
+                photosbySection[sectionTitle]!.append(photo)
             }
             else {
-                sections.append(sectionTitle)
+                sectionsAll.append(sectionTitle)
                 photosbySection[sectionTitle] = [photo]
             }
         }
-        
-        print("by sections : \(photosbySection)")
     }
     
     private func updateViewTable(with photoIn: [Photo]){
@@ -128,14 +133,13 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         let searchTags = makeSearchTagsFromText(for: searchText)
         for (_, photos) in photosbySection {
             let filtered = photos.filter({ (photo) -> Bool in
-                return isHasTags(in: photo.name, tags: searchTags)
+                return isHasTags(in: photo.name, tags: searchTags)   //search
             })
             filtered.forEach({photosWithTag.append($0)})
         }
     }
     
     private func isHasTags(in text: String?, tags: [String]) -> Bool {
-
         guard text != nil, !tags.isEmpty else {
             return false
         }
@@ -154,8 +158,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         else {return true}
       
     }
-    
-    // WARN - makes tags from everything
+  
     private func makeSearchTagsFromText(for findText: String) -> [String]{
         let findTags = findText
         
@@ -181,77 +184,77 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     //MARK: - table methods of
-    //++
     func numberOfSections(in tableView: UITableView) -> Int {
-//        if isFilterNow() {
-//            return photosWithTag.isEmpty ? 0 : 1
-//        }
-        
-        print("keys sections: \(photosbySection)")
-        return photosbySection.keys.count
+        return sectionsAll.count
     }
-
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        searchView.resignFirstResponder()
+        if isFilterNow() {
+            let photo = photosWithTag[indexPath.row]
+            openFullPhotoView(for: photo)
+        } else {
+            let sectionKey = sectionsAll[indexPath.section]
+            if let sectionPhotos = photosbySection[sectionKey], indexPath.row < sectionsAll.count {
+                let photo = sectionPhotos[indexPath.row]
+                openFullPhotoView(for: photo)
+            }
+        }
+    }
+    
+    private func openFullPhotoView(for photo: Photo){
+       
+        let detailPhotoViewController = UIStoryboard(name: "DetailPhoto", bundle: nil).instantiateViewController(withIdentifier: "DetailPhotoViewController") as! DetailPhotoViewController
+        detailPhotoViewController.photo = photo
+        self.modalPresentationStyle = .fullScreen
+        let rootNavigationController = UINavigationController(rootViewController: detailPhotoViewController)
+        present(rootNavigationController, animated: true)
+
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if isFilterNow() {
-//            return photosWithTag.count
-//        }
-        let sectionKey = sections[section]
-
-        print("sectionKey : \(sectionKey)")
-       
-        return photosbySection[sectionKey]?.count ?? 0
+        if isFilterNow() {
+            return photosWithTag.count
+        }
+         let sectionKey = sectionsAll[section]
+         return photosbySection[sectionKey]?.count ?? 0
     }
     
-    
-    //header title
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-//        if isFilterNow(){
-//            return nil
-//        }
-        let sectionKey = sections[section]
-        print("sectionKey: \(sectionKey)")
-        return sectionKey
+        if isFilterNow(){
+            return nil
+        }
+        return sectionsAll[section]
     }
-
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-      
-        //
-        
-        let section = sections[indexPath.section]
-        
-        
-//        if let sectionPhotos = photosbySection[section], indexPath.row < sectionPhotos.count {
-//
-//            let photo = Photo[row]
-//            ImageLoadUtils.loadWithPlaceholder(for: cell.photoThumbnail, from: photoPlace.url!, mode: .aspectFill)
-//            cell.titleLabel.text = photoPlace.title
-//            let categoryTitle = CategoryUtils.getTitle(for: photoPlace.category).uppercased()
-//            cell.descriptionLabel.text = "\(photoPlace.date.shortDate()) / \(categoryTitle)"
-//        }
-        
-   
-       // let photo = photosbySection[indexPath.]     [indexPath.row]
-        //cell.textLabel?.text = photo.name
-        //cell.detailTextLabel.text = Date.normalDate(date: photo.date)
-        
-        //cell.textLabel3?.text = photo.category.rawValue
-        //cell.imageView?.image = photo.image
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
+        let photo = photoArray[indexPath.row]
+        cell.imageViewCell?.image = photo.image
+        cell.labelTitle.text = photo.name
+        cell.laberDate.text = "\(photo.date.shortDate()) / \(photo.category.rawValue.uppercased())"
         return cell
     }
-   
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "showDetail"){
             if let indexPath = tableView.indexPathForSelectedRow {
-                let destinationController = segue.destination as! PhotoViewController
+                let destinationController = segue.destination as! NewPhotoViewController
                 destinationController.photo = photoArray[indexPath.row]
             }
         }
+    }
+    
+    //MARK: SearchMethods
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        photosWithTag.removeAll()
+        filterPhotosToShow(for: searchText)
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 
 }

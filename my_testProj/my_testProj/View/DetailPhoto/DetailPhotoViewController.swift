@@ -28,13 +28,8 @@ class DetailPhotoViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
         dismiss(animated: true, completion: {[weak self] in
-            print("closed the deltail window")
         })
-        
-        print("pressed")
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +43,8 @@ class DetailPhotoViewController: UIViewController, UIScrollViewDelegate {
             dateLabel.text = photo?.date.monthString
             
         }
-        
         startTapGesture()
         startUpDownViews()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

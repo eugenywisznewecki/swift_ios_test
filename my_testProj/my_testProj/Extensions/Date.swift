@@ -56,4 +56,11 @@ extension Date {
         print("moth+year: \(dateFormatter.string(from: self))")
         return dateFormatter.string(from: self)
     }
+    
+    public func shortDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = "MM-dd-yy"
+        return dateFormatter.string(from: self)
+    }
 }
