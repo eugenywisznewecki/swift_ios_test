@@ -200,7 +200,9 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            photo = Photo(name: "photoNEW",
+            photo = Photo(id: "1",
+                          url: "unknown",
+                          name: "photoNEW",
                           date: Date.parse("2018-11-11 06:50:16"),
                           image: pickedImage,
                           category: Category.Default)

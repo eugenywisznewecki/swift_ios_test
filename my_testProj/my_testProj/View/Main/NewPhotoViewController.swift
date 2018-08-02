@@ -34,6 +34,7 @@ class NewPhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBAction func doneButton(_ sender: UIButton) {
         
                 let samplePhoto =  Photo(
+                    id: "1", url: "unknown",
                     name: editTextView.text,
                     date: Date(),
                     image: imageView.image!,

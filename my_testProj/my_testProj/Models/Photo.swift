@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 struct Photo{
+    var id: String?
+    var url: String?
     var name: String?
     var date: Date = Date()
     var image: UIImage? = UIImage()
@@ -23,7 +25,10 @@ struct Photo{
 
 
 
-//    var id: String?
+
+
+
+//
 //    var url: URL?
 //    var latitude: Double = 43.000
 //    var longitude: Double = 53.000

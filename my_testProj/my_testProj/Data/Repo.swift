@@ -35,7 +35,6 @@ class Repo{
     static var isFriendsAllowed = true
     static var isDefaultAllowed = true
     
-    
     private static let imagesFBPath = "images"
     private static let photosObjectcFBPath = "photos"
     
@@ -50,17 +49,15 @@ class Repo{
     static let longitudeFB = "longitude"
     static let categoryFB = "category"
     
-    
     static func savePhoto(photo: Photo){
         //TODO: check Internet
         
         var tempPhoto = photo
         
         uploadImageToStorageFB(image: photo.image!, uploadImageHandler: {(url, error) in
-            guard error == nil else {
-               return
-            }
-            print("url from lambda \(url!)")
+            guard error == nil else {  return   }
+            tempPhoto.url = url?.absoluteString ?? ""
+            uploaPhotodBean(photo: tempPhoto)
         })
     }
     
@@ -70,40 +67,50 @@ class Repo{
         metadata.contentType = IMAGE_TYPE
         let imageName = "\(UUID().uuidString)\(IMAGE_EXTENSION)"
         let reference = currentRepo.imagesFilesStorageReference.child(imageName)
-        let uploadTak = reference.putData(imageData!, metadata: metadata, completion: { (metadata, error) in
+        reference.putData(imageData!, metadata: metadata, completion: { (metadata, error) in
             reference.downloadURL( completion: { (url, error) in
             uploadImageHandler(url, error)})
         })
-
     }
     
     static func uploaPhotodBean(photo: Photo){
+        let parametersForFB: [String : Any] =    [self.nameFB : photo.name!,
+                                        //self.imageURLFB : photo.url?.absoluteString ?? String.empty,
+                                        self.timestampFB : Int(photo.date.timeIntervalSince1970),
+                                        //self.latitudeFBudeKey : photo.latitude,
+                                        //self.longitudeFBudeKey : photo.longitude,
+                                        self.categoryFB : photo.category.rawValue]
         
-        let params: [String : Any] = [self.nameFB : photo.name!,
-                                      //self.imageURLFB : photo.url?.absoluteString ?? String.empty,
-            self.timestampFB : Int(photo.date.timeIntervalSince1970),
-            //self.latitudeFBudeKey : photo.latitude,
-            //self.longitudeFBudeKey : photo.longitude,
-            self.categoryFB : photo.category.rawValue]
-        
+        var dataBaseReference: DatabaseReference
+        if photo.id != nil {
+            dataBaseReference = currentRepo.photoBeansDBReference.child(photo.id!)
+        } else {
+            dataBaseReference = currentRepo.photoBeansDBReference.childByAutoId()
+        }
+        dataBaseReference.setValue(parametersForFB) { (error, dbRef) in
+            if error == nil {
+                var savedPhoto = photo
+                savedPhoto.id = dbRef.key           //MARK: - sets the ID
+            } else {
+                print("error")
+            }
+        }
     }
     
     static func getAllPhotos(){
-        
     }
 
     //TODO: delete this
     static func SAMPLE_FUNC(){
-        
-        let photo33 = Photo(name: "photo3 #tag",
+        let photo33 = Photo(id: "1",
+                            url: "unknown",
+                            name: "photo3 #tag",
                             date: Date.parse("2014-04-28 06:50:16"),
                             image: UIImage(named: "download3")!,
                             category: Category.Friends)
         
         savePhoto(photo: photo33)
-        
     }
-    
 }
 
 
