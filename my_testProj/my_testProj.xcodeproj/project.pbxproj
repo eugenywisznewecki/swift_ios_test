@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		011D61052112F8D50083FD05 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D61042112F8D50083FD05 /* Provider.swift */; };
 		014C5E58210F6091006D3DCB /* DetailPhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 014C5E57210F6091006D3DCB /* DetailPhoto.storyboard */; };
 		014C5E5A210F60A2006D3DCB /* DetailPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014C5E59210F60A2006D3DCB /* DetailPhotoViewController.swift */; };
 		014E26E6210F2E9B0084B4A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 014E26E5210F2E9A0084B4A8 /* GoogleService-Info.plist */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		011D61042112F8D50083FD05 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		014C5E57210F6091006D3DCB /* DetailPhoto.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailPhoto.storyboard; sourceTree = "<group>"; };
 		014C5E59210F60A2006D3DCB /* DetailPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPhotoViewController.swift; sourceTree = "<group>"; };
 		014E26E5210F2E9A0084B4A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -127,7 +129,7 @@
 		015AED392101D4680061F5FF /* my_testProj */ = {
 			isa = PBXGroup;
 			children = (
-				01A15F1C21107B8500A7A0A7 /* Network */,
+				01A15F1C21107B8500A7A0A7 /* Data */,
 				01917B1F210F43B10057BACB /* Utils */,
 				01AF2569210F07A800F8FC34 /* Resources */,
 				837960F5210DF97900A315FC /* View */,
@@ -174,12 +176,13 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		01A15F1C21107B8500A7A0A7 /* Network */ = {
+		01A15F1C21107B8500A7A0A7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				01A15F1D21107B9A00A7A0A7 /* Repo.swift */,
+				011D61042112F8D50083FD05 /* Provider.swift */,
 			);
-			path = Network;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		01AF2569210F07A800F8FC34 /* Resources */ = {
@@ -392,6 +395,7 @@
 				01A05F2D2111AC4D00C2AF4D /* PhotoCategories.swift in Sources */,
 				015C3B6D21071A5100F70CE5 /* Month.swift in Sources */,
 				015AED3B2101D4680061F5FF /* AppDelegate.swift in Sources */,
+				011D61052112F8D50083FD05 /* Provider.swift in Sources */,
 				014C5E5A210F60A2006D3DCB /* DetailPhotoViewController.swift in Sources */,
 				015AED3D2101D4680061F5FF /* MapViewController.swift in Sources */,
 				01A15F202110826400A7A0A7 /* Date.swift in Sources */,
