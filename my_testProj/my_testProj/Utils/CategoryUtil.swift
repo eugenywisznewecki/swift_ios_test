@@ -26,43 +26,42 @@ struct CategoryUtils {
         default: return true
         }
     }
-
-        
-        static func pinImage(for category: Category) -> UIImage {
-            return UIImage(named: CategoryUtils.getImageName(for: category))!
-        }
-        
-        static func getTitle(for category: Category) -> String {
-            switch category {
-            case .Nature:
-                return PhotoCategoryName.nature
-            case .Friends:
-                return PhotoCategoryName.friends
-            case .Default:
-                return PhotoCategoryName.defaults
-            }
-        }
-        
-        static func getImageName(for category: Category) -> String {
-            switch category {
-            case .Nature:
-                return AssetsImageName.markerNature
-            case .Friends:
-                return AssetsImageName.markerFriends
-            case .Default:
-                return AssetsImageName.markerDefault
-            }
-        }
-        
-        static func getColor(for category: Category) -> UIColor {
-            switch category {
-            case .Nature:
-                return UIColor.green
-            case .Friends:
-                return UIColor.yellow
-            case .Default:
-                return UIColor.blue
-            }
+    
+    static func pinImage(for category: Category) -> UIImage {
+        return UIImage(named: CategoryUtils.getImageName(for: category))!
+    }
+    
+    static func getTitle(for category: Category) -> String {
+        switch category {
+        case .Nature:
+            return PhotoCategoryName.nature
+        case .Friends:
+            return PhotoCategoryName.friends
+        case .Default:
+            return PhotoCategoryName.defaults
         }
     }
+    
+    static func getImageName(for category: Category) -> String {
+        switch category {
+        case .Nature:
+            return AssetsImageName.markerNature
+        case .Friends:
+            return AssetsImageName.markerFriends
+        case .Default:
+            return AssetsImageName.markerDefault
+        }
+    }
+    
+    static func getColor(for category: Category) -> UIColor {
+        switch category {
+        case .Nature:
+            return UIColor.green
+        case .Friends:
+            return UIColor.yellow
+        case .Default:
+            return UIColor.blue
+        }
+    }
+}
 

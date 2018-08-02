@@ -32,15 +32,15 @@ class NewPhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     @IBAction func doneButton(_ sender: UIButton) {
+
+        photo!.name = editTextView.text
         
-                let samplePhoto =  Photo(
-                    id: "1", url: "unknown",
-                    name: editTextView.text,
-                    date: Date(),
-                    image: imageView.image!,
-                    category: .Friends
-                )
-                print(samplePhoto)
+        //TODO: to do smth with markers and annotations
+        if (photo != nil) {
+             Repo.savePhoto(photo: photo!)
+        }
+       
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -55,14 +55,16 @@ class NewPhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         //sets the photo
         if (photo?.image) != nil {
             imageView.image = photo!.image
+            dateLabel.text = photo!.date.shortDate()
+            editTextView.text = photo!.name
         }
         
         editTextView.delegate = self
         
         //sets the text
-        editTextView.layer.cornerRadius = 2
+        editTextView.layer.cornerRadius = 4
+        editTextView.layer.borderWidth = 2
         editTextView.layer.borderColor = UIColor.gray.cgColor
-        editTextView.layer.borderWidth = 1
         editTextView.tintColor = UIColor.lightGray
         
         //sets categoryPicker
