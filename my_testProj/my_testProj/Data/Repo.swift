@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import FirebaseDatabase
 
+
 // singletone??
 // TODO: - ask about Dagger2 or simply dependency injection-mirror in IOS
 class Repo{
@@ -28,7 +29,7 @@ class Repo{
             .child(Repo.photosObjectcFBPath)
             .child(currentUser?.uid ?? "")
     }()
-
+    
     
     static var isNatureAllowed = true
     static var isFriendsAllowed = true
@@ -40,30 +41,57 @@ class Repo{
     
     private static let IMAGE_TYPE = "image/jpeg"
     private static let IMAGE_EXTENSION = ".jpeg"
-
     
-    static func uploadImageToStorageFB(image: UIImage){
+    //keys for FBdatabase
+    static let nameFB = "title"
+    static let imageURLFB = "imageurl"
+    static let timestampFB = "timestamp"
+    static let latitudeFB = "latitude"
+    static let longitudeFB = "longitude"
+    static let categoryFB = "category"
+    
+    
+    static func savePhoto(photo: Photo){
+        //TODO: check Internet
         
+        var tempPhoto = photo
+        
+        uploadImageToStorageFB(image: photo.image!, uploadImageHandler: {(url, error) in
+            guard error == nil else {
+               return
+            }
+            print("url from lambda \(url!)")
+        })
+    }
+    
+    static func uploadImageToStorageFB(image: UIImage, uploadImageHandler: @escaping (URL?, Error?) -> ()){
         let imageData = UIImageJPEGRepresentation(image, 1.0)
-        let metaData = StorageMetadata()
-        metaData.contentType = IMAGE_TYPE
+        let metadata = StorageMetadata()
+        metadata.contentType = IMAGE_TYPE
         let imageName = "\(UUID().uuidString)\(IMAGE_EXTENSION)"
-        currentRepo.imagesFilesStorageReference.child(imageName).putData(imageData!, metadata: metaData, completion: nil)
+        let reference = currentRepo.imagesFilesStorageReference.child(imageName)
+        let uploadTak = reference.putData(imageData!, metadata: metadata, completion: { (metadata, error) in
+            reference.downloadURL( completion: { (url, error) in
+            uploadImageHandler(url, error)})
+        })
 
     }
     
-    static func uploaPhotodBean(){
+    static func uploaPhotodBean(photo: Photo){
+        
+        let params: [String : Any] = [self.nameFB : photo.name!,
+                                      //self.imageURLFB : photo.url?.absoluteString ?? String.empty,
+            self.timestampFB : Int(photo.date.timeIntervalSince1970),
+            //self.latitudeFBudeKey : photo.latitude,
+            //self.longitudeFBudeKey : photo.longitude,
+            self.categoryFB : photo.category.rawValue]
         
     }
     
     static func getAllPhotos(){
         
     }
-    
-    static func savePhoto(){
-        
-    }
-    
+
     //TODO: delete this
     static func SAMPLE_FUNC(){
         
@@ -72,10 +100,10 @@ class Repo{
                             image: UIImage(named: "download3")!,
                             category: Category.Friends)
         
-        uploadImageToStorageFB(image: photo33.image!)
-
+        savePhoto(photo: photo33)
+        
     }
-
+    
 }
 
 
