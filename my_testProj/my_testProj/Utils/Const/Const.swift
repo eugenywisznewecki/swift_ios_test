@@ -29,7 +29,7 @@ struct AssetsImageName {
     static let arrowRight = "ic_arrow_right"
 }
 
-struct PhotoPlaceCategoryName {
+struct PhotoCategoryName {
     static let friends = "Friends"
     static let nature = "Nature"
     static let defaults = "Default"

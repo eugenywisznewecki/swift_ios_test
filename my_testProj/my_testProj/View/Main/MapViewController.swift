@@ -49,6 +49,9 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //MARK: - SAMPLE for testing
+        Repo.SAMPLE_FUNC()
+        
         //location Permission
         if CLLocationManager.locationServicesEnabled() {
             checkLocationPermissions()

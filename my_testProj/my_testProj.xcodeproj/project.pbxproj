@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		011D61052112F8D50083FD05 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D61042112F8D50083FD05 /* Provider.swift */; };
+		011D61052112F8D50083FD05 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D61042112F8D50083FD05 /* Repo.swift */; };
 		014C5E58210F6091006D3DCB /* DetailPhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 014C5E57210F6091006D3DCB /* DetailPhoto.storyboard */; };
 		014C5E5A210F60A2006D3DCB /* DetailPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014C5E59210F60A2006D3DCB /* DetailPhotoViewController.swift */; };
 		014E26E6210F2E9B0084B4A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 014E26E5210F2E9A0084B4A8 /* GoogleService-Info.plist */; };
@@ -27,7 +27,6 @@
 		01A05F312111AE2500C2AF4D /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A05F302111AE2500C2AF4D /* UIViewController.swift */; };
 		01A05F332112144A00C2AF4D /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A05F322112144A00C2AF4D /* PhotoCell.swift */; };
 		01A15F1B211067C000A7A0A7 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A15F1A211067C000A7A0A7 /* CategoryViewController.swift */; };
-		01A15F1E21107B9A00A7A0A7 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A15F1D21107B9A00A7A0A7 /* Repo.swift */; };
 		01A15F202110826400A7A0A7 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A15F1F2110826400A7A0A7 /* Date.swift */; };
 		01A15F242110BD6300A7A0A7 /* NewPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A15F232110BD6300A7A0A7 /* NewPhotoViewController.swift */; };
 		01AF256C210F236A00F8FC34 /* AuthentificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AF256B210F236A00F8FC34 /* AuthentificationViewController.swift */; };
@@ -36,7 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		011D61042112F8D50083FD05 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		011D61042112F8D50083FD05 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		014C5E57210F6091006D3DCB /* DetailPhoto.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailPhoto.storyboard; sourceTree = "<group>"; };
 		014C5E59210F60A2006D3DCB /* DetailPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPhotoViewController.swift; sourceTree = "<group>"; };
 		014E26E5210F2E9A0084B4A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -58,7 +57,6 @@
 		01A05F302111AE2500C2AF4D /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		01A05F322112144A00C2AF4D /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		01A15F1A211067C000A7A0A7 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
-		01A15F1D21107B9A00A7A0A7 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		01A15F1F2110826400A7A0A7 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		01A15F232110BD6300A7A0A7 /* NewPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPhotoViewController.swift; sourceTree = "<group>"; };
 		01AF256B210F236A00F8FC34 /* AuthentificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthentificationViewController.swift; sourceTree = "<group>"; };
@@ -179,8 +177,7 @@
 		01A15F1C21107B8500A7A0A7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				01A15F1D21107B9A00A7A0A7 /* Repo.swift */,
-				011D61042112F8D50083FD05 /* Provider.swift */,
+				011D61042112F8D50083FD05 /* Repo.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -386,7 +383,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01A15F1E21107B9A00A7A0A7 /* Repo.swift in Sources */,
 				01A05F312111AE2500C2AF4D /* UIViewController.swift in Sources */,
 				015C3B662101FA7F00F70CE5 /* Photo.swift in Sources */,
 				015C3B6A210715A400F70CE5 /* Extensions.swift in Sources */,
@@ -395,7 +391,7 @@
 				01A05F2D2111AC4D00C2AF4D /* PhotoCategories.swift in Sources */,
 				015C3B6D21071A5100F70CE5 /* Month.swift in Sources */,
 				015AED3B2101D4680061F5FF /* AppDelegate.swift in Sources */,
-				011D61052112F8D50083FD05 /* Provider.swift in Sources */,
+				011D61052112F8D50083FD05 /* Repo.swift in Sources */,
 				014C5E5A210F60A2006D3DCB /* DetailPhotoViewController.swift in Sources */,
 				015AED3D2101D4680061F5FF /* MapViewController.swift in Sources */,
 				01A15F202110826400A7A0A7 /* Date.swift in Sources */,

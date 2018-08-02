@@ -26,7 +26,7 @@ struct CategoryUtils {
         default: return true
         }
     }
-        
+
         
         static func pinImage(for category: Category) -> UIImage {
             return UIImage(named: CategoryUtils.getImageName(for: category))!
@@ -35,11 +35,11 @@ struct CategoryUtils {
         static func getTitle(for category: Category) -> String {
             switch category {
             case .Nature:
-                return PhotoPlaceCategoryName.nature
+                return PhotoCategoryName.nature
             case .Friends:
-                return PhotoPlaceCategoryName.friends
+                return PhotoCategoryName.friends
             case .Default:
-                return PhotoPlaceCategoryName.defaults
+                return PhotoCategoryName.defaults
             }
         }
         
