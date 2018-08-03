@@ -16,6 +16,8 @@ class Repo{
     
     private static var currentRepo = Repo()
     
+    var photosForDownload = [Photo]()
+    
     lazy var currentUser: User? = { Auth.auth().currentUser }()
     
     lazy var imagesFilesStorageReference: StorageReference  = {
@@ -69,17 +71,17 @@ class Repo{
         let reference = currentRepo.imagesFilesStorageReference.child(imageName)
         reference.putData(imageData!, metadata: metadata, completion: { (metadata, error) in
             reference.downloadURL( completion: { (url, error) in
-            uploadImageHandler(url, error)})
+                uploadImageHandler(url, error)})
         })
     }
     
     static func uploaPhotodBean(photo: Photo){
         let parametersForFB: [String : Any] =    [self.nameFB : photo.name!,
-                                        //self.imageURLFB : photo.url?.absoluteString ?? String.empty,
-                                        self.timestampFB : Int(photo.date.timeIntervalSince1970),
-                                        //self.latitudeFBudeKey : photo.latitude,
-                                        //self.longitudeFBudeKey : photo.longitude,
-                                        self.categoryFB : photo.category.rawValue]
+                                                  //self.imageURLFB : photo.url?.absoluteString ?? String.empty,
+            self.timestampFB : Int(photo.date.timeIntervalSince1970),
+            //self.latitudeFBudeKey : photo.latitude,
+            //self.longitudeFBudeKey : photo.longitude,
+            self.categoryFB : photo.category.rawValue]
         
         var dataBaseReference: DatabaseReference
         if photo.id != nil {
@@ -97,19 +99,65 @@ class Repo{
         }
     }
     
-    static func getAllPhotos(){
+    static func getAllPhotos() {
+        currentRepo.photoBeansDBReference.observeSingleEvent(of: DataEventType.value, with: { (snapshot: DataSnapshot) in
+            guard let snapshotMap = snapshot.value as? [String: Any] else {
+                print("null from snaphot")
+                return
+            }
+            for (key, properties) in snapshotMap {
+                let photoSnapshot = (key, properties)
+                if let photo = getPhotoFromSnapShot(from: photoSnapshot){
+                    currentRepo.photosForDownload.append(photo)
+                    print(photo)
+                }
+            }
+             print("photos downloaded")
+        })
     }
-
+    
+    private static func getPhotoFromSnapShot(from snapshot: (photoId: String, values: Any)) -> Photo? {
+        
+        guard let properties = snapshot.values as? [String: Any] else { return nil }
+        
+        let name = properties [nameFB] as? String
+        
+        let imageURLString = properties[imageURLFB] as! String
+        let url = imageURLString
+        
+        let timestamp = properties[timestampFB] as! Int
+        
+        let timeInterval = TimeInterval(timestamp)
+        let date = Date(timeIntervalSince1970: timeInterval)
+        
+        let latitude  = properties[latitudeFB] as! Double
+        let longitude = properties[longitudeFB] as! Double
+        let categoryValue = properties[categoryFB] as! String
+        
+        var photo =  Photo(id: snapshot.photoId, date: date, latitude: latitude, longitude: longitude)
+        photo.name = name
+        photo.url = url
+        if let category = Category(rawValue: categoryValue) {
+            photo.category = category
+        }
+        return photo
+    }
+    
+    
+    
     //TODO: delete this
     static func SAMPLE_FUNC(){
-        let photo33 = Photo(id: "1",
-                            url: "unknown",
-                            name: "photo3 #tag",
-                            date: Date.parse("2014-04-28 06:50:16"),
-                            image: UIImage(named: "download3")!,
-                            category: Category.Friends)
+//        let photo33 = Photo(id: "1",
+//                            url: "unknown",
+//                            name: "photo3 #tag",
+//                            date: Date.parse("2014-04-28 06:50:16"),
+//                            image: UIImage(named: "download3")!,
+//                            category: Category.Friends,
+//                            latitude: 53.0,
+//                            longitude: 53.0)
+//               savePhoto(photo: photo33)
         
-        savePhoto(photo: photo33)
+        getAllPhotos()
     }
 }
 

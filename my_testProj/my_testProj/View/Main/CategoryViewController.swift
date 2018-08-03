@@ -39,60 +39,96 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         
         
         //SAMPLE array
-        let photo1 = Photo(id: "1", url: "unknown",name: "photo1",
-                           date: Date.parse("2016-02-02 03:03:16"),
+        let photo1 = Photo(id: "1",
+                           url: "unknown",
+                           name: "photo3 #vvv",
+                           date: Date.parse("2014-04-28 06:50:16"),
                            image: UIImage(named: "download")!,
-                           category: Category.Friends )
+                           category: Category.Friends,
+                           latitude: 53.0,
+                           longitude: 53.0)
         
         photoArray.append(photo1);
         
-        let photo2 = Photo(id: "1", url: "unknown",name: "photo2 222",
-                           date: Date.parse("2015-05-14 03:16:16"),
-                           image: UIImage(named: "download1")!,
-                           category: Category.Nature)
+        let photo2 = Photo(id: "2",
+                           url: "unknown",
+                           name: "photo2#222",
+                           date: Date.parse("2014-02-28 06:50:16"),
+                           image: UIImage(named: "download")!,
+                           category: Category.Friends,
+                           latitude: 53.0,
+                           longitude: 53.0)
         photoArray.append(photo2);
         
-        let photo3 = Photo(id: "1", url: "unknown", name: "photo3 mmm",
-                           date: Date.parse("2014-04-28 06:50:16"),
+        let photo3 = Photo(id: "3",
+                           url: "unknown",
+                           name: "photo2",
+                           date: Date.parse("2014-01-28 06:50:16"),
                            image: UIImage(named: "download3")!,
-                           category: Category.Friends)
+                           category: Category.Friends,
+                           latitude: 53.0,
+                           longitude: 53.0)
         photoArray.append(photo3);
         
         
-        let photo4 = Photo(id: "1", url: "unknown",name: "photo4 tag",
-                           date: Date.parse("2015-01-14 03:16:16"),
+        let photo4 = Photo(id: "4",
+                           url: "unknown",
+                           name: "photorrr #rr",
+                           date: Date.parse("2014-01-28 06:50:16"),
                            image: UIImage(named: "download1")!,
-                           category: Category.Nature)
+                           category: Category.Friends,
+                           latitude: 53.0,
+                           longitude: 53.0)
         photoArray.append(photo4);
         
-        let photo33 = Photo(id: "1", url: "unknown",name: "photo3 #tag",
-                           date: Date.parse("2014-04-28 06:50:16"),
-                           image: UIImage(named: "download3")!,
-                           category: Category.Friends)
+        let photo33 = Photo(id: "5",
+                            url: "unknown",
+                            name: "333333",
+                            date: Date.parse("2014-01-28 06:50:16"),
+                            image: UIImage(named: "download1")!,
+                            category: Category.Friends,
+                            latitude: 53.0,
+                            longitude: 53.0)
         photoArray.append(photo33);
         
-        let photo43 = Photo(id: "1", url: "unknown",name: "photo4",
-                           date: Date.parse("2015-01-14 03:16:16"),
-                           image: UIImage(named: "download1")!,
-                           category: Category.Nature)
+        let photo43 = Photo(id: "6",
+                            url: "unknown",
+                            name: "fffff #fff",
+                            date: Date.parse("2015-04-28 06:50:16"),
+                            image: UIImage(named: "download3")!,
+                            category: Category.Friends,
+                            latitude: 53.0,
+                            longitude: 53.0)
         photoArray.append(photo43);
 
-        let photo5 = Photo(id: "1", url: "unknown",name: "photo5 #mmm",
-                           date: Date.parse("2011-02-12 06:50:16"),
-                           image: UIImage(named: "download3")!,
-                           category: Category.Default)
+        let photo5 = Photo(id: "7",
+                           url: "unknown",
+                           name: "adsdasdasd",
+                           date: Date.parse("2015-03-28 06:50:16"),
+                           image: UIImage(named: "download1")!,
+                           category: Category.Friends,
+                           latitude: 53.0,
+                           longitude: 53.0)
         photoArray.append(photo5);
         
-        let photo6 = Photo(id: "1", url: "unknown",name: "photo6",
-                           date: Date.parse("2011-02-12 06:50:16"),
-                           image: UIImage(named: "download3")!,
-                           category: Category.Default)
+        let photo6 = Photo(id: "8",
+                           url: "unknown",
+                           name: "bbbbb #tag",
+                           date: Date.parse("2013-04-28 06:50:16"),
+                           image: UIImage(named: "download")!,
+                           category: Category.Friends,
+                           latitude: 53.0,
+                           longitude: 53.0)
         photoArray.append(photo6);
         
-        let photo7 = Photo(id: "1", url: "unknown",name: "photo7",
-                           date: Date.parse("2011-02-12 06:50:16"),
+        let photo7 = Photo(id: "9",
+                           url: "unknown",
+                           name: "ssssssss #tag",
+                           date: Date.parse("2012-01-28 06:50:16"),
                            image: UIImage(named: "download3")!,
-                           category: Category.Default)
+                           category: Category.Friends,
+                           latitude: 53.0,
+                           longitude: 53.0)
         photoArray.append(photo7);
         
        dividePhotosIntoSections(from: photoArray)

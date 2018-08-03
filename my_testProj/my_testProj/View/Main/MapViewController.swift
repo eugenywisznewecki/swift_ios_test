@@ -201,11 +201,16 @@ class MapViewController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             photo = Photo(id: "1",
-                          url: "unknown",
-                          name: "photoNEW",
-                          date: Date.parse("2018-11-11 06:50:16"),
-                          image: pickedImage,
-                          category: Category.Default)
+                               url: "unknown",
+                               name: "photo3 #tag",
+                               date: Date.parse("2014-02-28 06:50:16"),
+                               image: UIImage(named: "download")!,
+                               category: Category.Default,
+                               latitude: 53.0,
+                               longitude: 53.0)
+            
+            
+            
             
             dismiss(animated: true, completion: nil)
             performSegue(withIdentifier: "newPhotoDetail", sender: self)
